@@ -183,7 +183,7 @@ export default function LoginPage() {
                 Sign in
               </Link>
             </p>
-            doctor-auth
+            
           </div>
         </div>
       </div>
