@@ -1,12 +1,11 @@
 "use client";
-import Image from "next/image";
-import BookAppointment from "../Modals/BookAppointment";
-import { useModal } from "@/Providers/ModalContext";
 import ThemeButton from "@/Components/ui/Button/ThemeButton";
-import React, { useState } from "react";
+import { useModal } from "@/Providers/ModalContext";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import path from "path";
+import { useState } from "react";
+import BookAppointment from "../Modals/BookAppointment";
 
 const navLinks = [
   { label: "Home", href: "/doctor-home" },
@@ -16,12 +15,29 @@ const navLinks = [
   { label: "Messages", href: "/doctor-home/messages" },
 ];
 
+const mobileNavLinks = [
+  { label: "Home", href: "/doctor-home" },
+  { label: "Requests", href: "/doctor-home/requests" },
+  { label: "Appointments", href: "/doctor-home/appointments" },
+  { label: "Contact Us", href: "/doctor-home/contact" },
+  { label: "Messages", href: "/doctor-home/messages" },
+  { label: "My Profile", href: "/doctor-home/profile" },
+
+  { label: "Payments", href: "/doctor-home/payments" },
+  { label: "Wallet", href: "/doctor-home/wallet" },
+  {
+    label: "Change Password",
+
+    href: "/doctor-home/change-password",
+  },
+  { label: "About Us", href: "#" },
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms & Conditions", href: "#" },
+];
+
 const DoctorHeader = () => {
-  const { openModal } = useModal();
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
-
-  console.log(pathname, "pathName");
 
   return (
     <header className="bg-white shadow relative">
@@ -105,31 +121,22 @@ const DoctorHeader = () => {
               </svg>
             </button>
             <nav className="flex flex-col gap-6 mt-16 px-8">
-              <a
-                href="/contact"
-                className="text-[#1a2a4e] hover:underline"
-                onClick={() => setShowMenu(false)}
-              >
-                Contact Us
-              </a>
-              <a
-                href="/home/messages"
-                className="text-[#1a2a4e] hover:underline"
-                onClick={() => setShowMenu(false)}
-              >
-                Messages
-              </a>
+              {mobileNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`hover:underline ${
+                    pathname === link.href
+                      ? "text-primary font-semibold"
+                      : "text-[rgb(26,42,78)]"
+                  }`}
+                  onClick={() => setShowMenu(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
             <div className="flex flex-col items-start gap-4 px-8 mt-8">
-              <ThemeButton
-                variant="primary"
-                onClick={() => {
-                  openModal(<BookAppointment />);
-                  setShowMenu(false);
-                }}
-              >
-                Appointment
-              </ThemeButton>
               <div className="relative hidden md:block ">
                 <Image
                   src="/images/dummyUserPlaceholder.jpg"

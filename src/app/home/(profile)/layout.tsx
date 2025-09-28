@@ -33,24 +33,24 @@ const sidebarLinks = [
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   return (
-    <div className="flex min-h-screen ">
-      {/* Sidebar */}
-      <aside className="w-[260px] bg-white border-r border-[#e6e8f3] py-8 px-4 flex flex-col ">
-        <nav className="flex-1">
+    <div className="flex min-h-screen">
+      <aside
+        className={`w-[260px] bg-white border-r border-[#e6e8f3] py-8 px-4  flex-col z-40 hidden md:flex`}
+        style={{ maxWidth: "90vw" }}
+      >
+        <nav className="flex-1 mt-8 md:mt-0">
           <ul>
             {sidebarLinks.map((link, idx) => (
-              <li key={link.label} className={`mb-2`}>
+              <li key={link.label} className="mb-2">
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary hover:text-white  ${
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary hover:text-white ${
                     link.href === pathname
                       ? "bg-primary text-white font-semibold"
                       : "text-[#1a2a4e]"
                   }`}
                 >
-                  <span className={`text-xl   hover:text-white`}>
-                    {link.icon}
-                  </span>
+                  <span className="text-xl hover:text-white">{link.icon}</span>
                   <span>{link.label}</span>
                   {link.label === "Language" && (
                     <span className="ml-auto text-xs text-gray-500">Es</span>
@@ -61,7 +61,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </ul>
         </nav>
       </aside>
-      {/* Main Content */}
+
       <main className="flex-1 p-10">{children}</main>
     </div>
   );

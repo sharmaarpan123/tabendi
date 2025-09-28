@@ -35,7 +35,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen ">
       {/* Sidebar */}
-      <aside className="w-[260px] bg-white border-r border-[#e6e8f3] py-8 px-4 flex flex-col ">
+      <aside className="w-[260px] hidden md:flex bg-white border-r border-[#e6e8f3] py-8 px-4  flex-col ">
         <nav className="flex-1">
           <ul>
             {sidebarLinks.map((link, idx) => (

@@ -76,7 +76,7 @@ const Page = () => {
           .map((a, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-4 bg-white border rounded-lg px-4 py-3"
+              className="flex flex-col lg:flex-row items-center gap-4 bg-white border rounded-lg px-4 py-3"
             >
               <div
                 className="relative rounded"

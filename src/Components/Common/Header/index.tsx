@@ -1,10 +1,32 @@
 "use client";
-import Image from "next/image";
-import BookAppointment from "../Modals/BookAppointment";
-import { useModal } from "@/Providers/ModalContext";
 import ThemeButton from "@/Components/ui/Button/ThemeButton";
-import React, { useState } from "react";
+import { useModal } from "@/Providers/ModalContext";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import BookAppointment from "../Modals/BookAppointment";
+
+const mobileNavLinks = [
+  { label: "Contact Us", href: "/home/contact" },
+  { label: "Messages", href: "/home/messages" },
+  { label: "Appointments", href: "/home/appointments" },
+  { label: "My Profile", href: "/home/profile" },
+  {
+    label: "Appointments",
+
+    href: "/home/appointments",
+  },
+  { label: "Payments", href: "/home/payments" },
+  { label: "Wallet", href: "/home/wallet" },
+  {
+    label: "Change Password",
+
+    href: "/home/change-password",
+  },
+  { label: "About Us", href: "#" },
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms & Conditions", href: "#" },
+];
 
 const Header = () => {
   const { openModal } = useModal();
@@ -50,6 +72,13 @@ const Header = () => {
           >
             Messages
           </Link>
+          <Link
+            href="/home/appointments"
+            className="text-[#1a2a4e] hover:underline"
+            onClick={() => setShowMenu(false)}
+          >
+            Appointments
+          </Link>
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <ThemeButton
@@ -94,20 +123,18 @@ const Header = () => {
               </svg>
             </button>
             <nav className="flex flex-col gap-6 mt-16 px-8">
-              <Link
-                href="/contact"
-                className="text-[#1a2a4e] hover:underline"
-                onClick={() => setShowMenu(false)}
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="/home/messages"
-                className="text-[#1a2a4e] hover:underline"
-                onClick={() => setShowMenu(false)}
-              >
-                Messages
-              </Link>
+              {mobileNavLinks.map((link, index) => {
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-[#1a2a4e] hover:underline"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
             <div className="flex flex-col items-start gap-4 px-8 mt-8">
               <ThemeButton

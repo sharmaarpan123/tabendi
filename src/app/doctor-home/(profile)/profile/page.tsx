@@ -29,7 +29,7 @@ const Page = () => {
           <EditIcon />
         </button>
       </div>
-      <div className="flex gap-8 items-center">
+      <div className="flex flex-col md:flex-row gap-8 items-center">
         <Image
           src={dummyUserPlaceHolder}
           alt={user.name}
@@ -37,7 +37,7 @@ const Page = () => {
           height={50}
           className="h-24 w-24 rounded-full object-cover border-4 border-[#e6e8f3]"
         />
-        <div className="grid grid-cols-3 gap-x-8 gap-y-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4 w-full">
           <div>
             <div className="text-xs text-gray-500">Name</div>
             <div className="font-semibold">{user.name}</div>

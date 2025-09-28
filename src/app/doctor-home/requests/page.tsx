@@ -90,7 +90,7 @@ const page = () => {
           {requests.map((r, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-4 bg-[#f6f8fa] rounded-lg px-4 py-3"
+              className="flex flex-col md:flex-row items-center gap-4 bg-[#f6f8fa] rounded-lg px-4 py-3"
             >
               <Image
                 src={dummyUserPlaceHolder}

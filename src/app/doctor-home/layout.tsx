@@ -8,7 +8,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Header */}
       <DoctorHeader />
       {/* Main Content */}
-      <main className="flex-1 container mx-auto px-6 py-8">{children}</main>
+      <main className="flex-1 container mx-auto  px-2 md:px-6 py-8">
+        {children}
+      </main>
       {/* Footer */}
       <Footer />
     </div>

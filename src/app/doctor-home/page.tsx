@@ -125,7 +125,7 @@ const messages = [
 
 const page = () => {
   return (
-    <div className="bg-[#f6f8fa] min-h-screen p-8">
+    <div className="bg-[#f6f8fa] min-h-screen ">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         {stats.map((stat, idx) => (
           <div
@@ -167,7 +167,7 @@ const page = () => {
             {appointments.map((a, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-4 border-b last:border-b-0 py-3"
+                className="flex flex-col md:flex-row items-center gap-4 border-b last:border-b-0 py-3"
               >
                 <Image
                   src={dummyUserPlaceHolder}
@@ -232,7 +232,7 @@ const page = () => {
         <div className="bg-white rounded-xl p-6 shadow-sm flex flex-col justify-between">
           <div className="mb-4">
             <div className="font-semibold mb-2">Next Appointment</div>
-            <div className="bg-primary rounded-xl p-4 flex items-center gap-4">
+            <div className="bg-primary rounded-xl p-4 flex flex-col md:flex-row items-center gap-4">
               <Image
                 src={dummyUserPlaceHolder}
                 alt="Esther Howard"
