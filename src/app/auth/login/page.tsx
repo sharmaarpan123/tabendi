@@ -53,11 +53,9 @@ export default function LoginPage() {
                 height={40}
               />
             </div>
-
             <h1 className="text-2xl font-semibold mb-6">
               Login into your account
             </h1>
-
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -164,7 +162,6 @@ export default function LoginPage() {
               </button>
             </div> */}
             </form>
-
             <p className="text-center mt-8">
               Don&apos;t have an account?{" "}
               <Link
@@ -174,6 +171,16 @@ export default function LoginPage() {
                 Sign Up
               </Link>
             </p>
+            <p className="text-center mt-8">
+              Sign in as doctor?{" "}
+              <Link
+                href="/doctor-auth/login"
+                className="text-primary hover:text-primary-hover"
+              >
+                Sign in
+              </Link>
+            </p>
+            doctor-auth
           </div>
         </div>
       </div>

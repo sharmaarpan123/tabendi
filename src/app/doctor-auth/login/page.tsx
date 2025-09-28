@@ -173,6 +173,15 @@ export default function LoginPage() {
                 Sign Up
               </Link>
             </p>
+            <p className="text-center mt-8">
+              Sign in as patient?{" "}
+              <Link
+                href="/auth/login"
+                className="text-primary hover:text-primary-hover"
+              >
+                Sign in
+              </Link>
+            </p>
           </div>
         </div>
       </div>
