@@ -6,20 +6,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function ForgetPasswordPage() {
-  const [formData, setFormData] = useState({
-    email: "",
-  });
+// Add these imports
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
+// Define Yup schema
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+});
+
+export default function ForgetPasswordPage() {
   const { openModal, closeModal } = useModal();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // Use react-hook-form with Yup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  const onSubmit = (data: any) => {
     openModal(
       <CommonModal
         type={ModalType.FORGET_EMAIL_SEND_SUCCESS}
         action={{ actionText: "Close", action: closeModal }}
-        variables={{ email: "sharmaarpan143@gmail.com" }}
+        variables={{ email: data.email }}
       />
     );
   };
@@ -67,7 +84,7 @@ export default function ForgetPasswordPage() {
             No worries , we&apos;ll send you reset instructions
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label className="block text-sm font-medium mb-2">
                 Email Address
@@ -76,11 +93,11 @@ export default function ForgetPasswordPage() {
                 type="email"
                 placeholder="Ex: hello@tabendi.com"
                 className="w-full px-4 py-3 border rounded-lg"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              )}
             </div>
 
             <button

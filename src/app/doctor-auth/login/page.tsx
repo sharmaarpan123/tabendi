@@ -2,22 +2,48 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+// Add these imports
+import { loginSuccess } from "@/store/slices/Auth/authSlice";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import * as yup from "yup";
+
+// Define Yup schema
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+  rememberMe: yup.boolean(),
+});
 
 export default function LoginPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    rememberMe: false,
+  // Use react-hook-form with Yup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = () => {
     router.push("/doctor-home");
+    dispatch(loginSuccess({ token: "token123123", user: { _id: "asdf" } }));
     // Handle login logic here
   };
 
@@ -60,7 +86,7 @@ export default function LoginPage() {
               Login into your account
             </h1>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Email Address
@@ -69,11 +95,13 @@ export default function LoginPage() {
                   type="email"
                   placeholder="Ex: hello@tabendi.com"
                   className="w-full px-4 py-3 border rounded-lg"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -84,10 +112,7 @@ export default function LoginPage() {
                   <input
                     type={showPassword ? "text" : "password"}
                     className="w-full px-4 py-3 border rounded-lg"
-                    value={formData.password}
-                    onChange={(e) =>
-                      setFormData({ ...formData, password: e.target.value })
-                    }
+                    {...register("password")}
                   />
                   <button
                     type="button"
@@ -97,6 +122,11 @@ export default function LoginPage() {
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
 
               <div className="flex items-center justify-between">
@@ -104,10 +134,7 @@ export default function LoginPage() {
                   <input
                     type="checkbox"
                     className="mr-2"
-                    checked={formData.rememberMe}
-                    onChange={(e) =>
-                      setFormData({ ...formData, rememberMe: e.target.checked })
-                    }
+                    {...register("rememberMe")}
                   />
                   <span className="text-sm">Remember Me</span>
                 </label>

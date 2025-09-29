@@ -1,7 +1,6 @@
-import Progressbar from "@/Providers/Progressbar";
+import CommonProvider from "@/Providers";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ModalProvider } from "@/Providers/ModalContext";
 
 export const metadata: Metadata = {
   title: "Tabendi HealthCare",
@@ -16,9 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Progressbar>
-          <ModalProvider>{children}</ModalProvider>
-        </Progressbar>
+        <CommonProvider>{children}</CommonProvider>
       </body>
     </html>
   );
