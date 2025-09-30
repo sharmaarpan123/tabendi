@@ -185,6 +185,7 @@ export default function SignUpPage() {
               <input
                 type="tel"
                 placeholder="+1 (239) 555-0108"
+                maxLength={10}
                 className="w-full px-4 py-3 border rounded-lg"
                 {...register("phoneNumber")}
               />
@@ -212,9 +213,7 @@ export default function SignUpPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
-                Gender*
-              </label>
+              <label className="block text-sm font-medium mb-2">Gender*</label>
 
               <select
                 {...register("gender")}

@@ -1,7 +1,7 @@
 const pageRoutes = {
     userLogin: "/auth/login",
     userRegister: "/auth/register",
-    userDashboard: "/user/dashboard",
+    userDashboard: "/home",
     userProfile: "/user/profile",
     userSettings: "/user/settings",
     userLogout: "/auth/logout",

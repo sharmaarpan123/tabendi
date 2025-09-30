@@ -9,6 +9,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { catchAsync, checkResponse } from "@/utils/commonFunc";
+import { loginApi } from "@/api/ApiCalls";
+import pageRoutes from "@/utils/pagesRoutes";
+import { useMutation } from "@tanstack/react-query";
+import ThemeButton from "@/Components/ui/Button/ThemeButton";
 
 // Define Yup schema
 const schema = yup.object().shape({
@@ -17,7 +22,7 @@ const schema = yup.object().shape({
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
-  rememberMe: yup.boolean(),
+  rememberMe: yup.boolean().required(),
 });
 
 export default function LoginPage() {
@@ -38,9 +43,27 @@ export default function LoginPage() {
     },
   });
 
-  const onSubmit = (data: any) => {
-    router.push("/home");
-    // Handle login logic here
+  const { isPending, mutate } = useMutation({
+    mutationFn: catchAsync(async (body) => {
+      const res = await loginApi(body);
+      if (checkResponse({ res, showSuccess: true })) {
+        router.push(pageRoutes.userDashboard);
+      }
+    }),
+  });
+
+  const onSubmit = (data: {
+    email: string;
+    password: string;
+    rememberMe: boolean;
+  }) => {
+    const body = {
+      email_or_mobile: data.email,
+      password: data.password,
+      plateform: "web",
+      // device_token :''
+    };
+    mutate(body);
   };
 
   return (
@@ -141,12 +164,9 @@ export default function LoginPage() {
                 </Link>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
-              >
-                Sign In
-              </button>
+              <ThemeButton loader={isPending} type="submit" variant="primary">
+                Sign in
+              </ThemeButton>
 
               <div className="text-center">
                 <div className="relative py-4">

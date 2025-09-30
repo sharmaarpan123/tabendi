@@ -1,8 +1,7 @@
 const urls = {
-    logIn: "",
+    logIn: "/api/auth/login",
     signUp: "/api/auth/signup",
-    forgotPassword: "",
-
+    forgotPassword: "/api/auth/forgot_password",
 }
 
 export default urls;

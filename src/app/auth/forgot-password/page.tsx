@@ -4,12 +4,16 @@ import CommonModal, { ModalType } from "@/Components/Common/Modals";
 import { useModal } from "@/Providers/ModalContext";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 // Add these imports
-import { useForm } from "react-hook-form";
+import { forgetPasswordApi } from "@/api/ApiCalls";
+import { catchAsync, checkResponse } from "@/utils/commonFunc";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import ThemeButton from "@/Components/ui/Button/ThemeButton";
 
 // Define Yup schema
 const schema = yup.object().shape({
@@ -18,7 +22,7 @@ const schema = yup.object().shape({
 
 export default function ForgetPasswordPage() {
   const { openModal, closeModal } = useModal();
-
+  const { push } = useRouter();
   // Use react-hook-form with Yup
   const {
     register,
@@ -31,14 +35,24 @@ export default function ForgetPasswordPage() {
     },
   });
 
-  const onSubmit = (data: any) => {
-    openModal(
-      <CommonModal
-        type={ModalType.FORGET_EMAIL_SEND_SUCCESS}
-        action={{ actionText: "Close", action: closeModal }}
-        variables={{ email: data.email }}
-      />
-    );
+  const { isPending, mutate } = useMutation({
+    mutationFn: catchAsync(async (body) => {
+      const res = await forgetPasswordApi(body);
+      if (checkResponse({ res, showSuccess: true })) {
+        openModal(
+          <CommonModal
+            type={ModalType.FORGET_EMAIL_SEND_SUCCESS}
+            action={{ actionText: "Close", action: closeModal }}
+            variables={{ email: body.email }}
+          />
+        );
+      }
+    }),
+  });
+
+  const onSubmit = (data: { email: string }) => {
+    const body = { email_or_mobile: data?.email, type: "email" };
+    mutate(body);
   };
 
   return (
@@ -102,12 +116,9 @@ export default function ForgetPasswordPage() {
               )}
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
-            >
+            <ThemeButton loader={isPending} variant="primary">
               Forget Password
-            </button>
+            </ThemeButton>
 
             <div className="text-center">
               <div className="relative py-4">
