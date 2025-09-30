@@ -4,7 +4,6 @@ import CommonModal, { ModalType } from "@/Components/Common/Modals";
 import { useModal } from "@/Providers/ModalContext";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 // Add these imports
 import { useForm } from "react-hook-form";
@@ -96,7 +95,9 @@ export default function ForgetPasswordPage() {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 

@@ -8,6 +8,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { catchAsync, checkResponse } from "@/utils/commonFunc";
+import { signupApi } from "@/api/ApiCalls";
+import ThemeButton from "@/Components/ui/Button/ThemeButton";
+import { useRouter } from "next/navigation";
+import pageRoutes from "@/utils/pagesRoutes";
+import { genderOptions } from "@/utils/const";
 
 // Define Yup schema
 const schema = yup.object().shape({
@@ -16,6 +23,7 @@ const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   phoneNumber: yup.string().required("Phone number is required"),
   dateOfBirth: yup.string().required("Date of birth is required"),
+  gender: yup.number().required("Gender is required"),
   password: yup
     .string()
     .min(6, "Password must be at least 6 characters")
@@ -29,6 +37,7 @@ const schema = yup.object().shape({
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const router = useRouter(); // Import useRouter from Next.js
 
   // Use react-hook-form with Yup
   const {
@@ -45,11 +54,38 @@ export default function SignUpPage() {
       dateOfBirth: "",
       password: "",
       confirmPassword: "",
+      gender: 1,
     },
   });
 
-  const onSubmit = (data: any) => {
-    // Handle signup logic here
+  const { isPending, mutate } = useMutation({
+    mutationFn: catchAsync(async (body) => {
+      const res = await signupApi(body);
+      if (checkResponse({ res, showSuccess: true })) {
+        router.push(pageRoutes.userLogin);
+      }
+    }),
+  });
+
+  const onSubmit = (data: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    dateOfBirth: string;
+    password: string;
+    confirmPassword: string;
+    gender: number;
+  }) => {
+    const apiData = {
+      name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      date_of_birth: data.dateOfBirth,
+      mobile_number: data.phoneNumber,
+      gender_option_id: data.gender,
+    };
+    mutate(apiData);
   };
 
   return (
@@ -177,6 +213,30 @@ export default function SignUpPage() {
 
             <div>
               <label className="block text-sm font-medium mb-2">
+                Gender*
+              </label>
+
+              <select
+                {...register("gender")}
+                className="w-full px-4 py-3 border rounded-lg"
+              >
+                {genderOptions?.map((item) => {
+                  return (
+                    <option key={item?.value} value={item?.value}>
+                      {item?.label}
+                    </option>
+                  );
+                })}
+              </select>
+              {errors.gender && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.gender.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">
                 Password*
               </label>
               <div className="relative">
@@ -225,12 +285,9 @@ export default function SignUpPage() {
               )}
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
-            >
-              Sign Up
-            </button>
+            <ThemeButton type="submit" variant="primary" loader={isPending}>
+              Sign up
+            </ThemeButton>
           </form>
 
           <p className="text-center mt-8">
