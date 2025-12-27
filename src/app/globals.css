@@ -32,3 +32,8 @@ body {
   letter-spacing: 2px;
   rotate: 180deg;
 }
+
+
+.swiper-pagination-bullet-active-custom {
+  background: var(--primary) !important;
+}
