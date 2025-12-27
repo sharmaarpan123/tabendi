@@ -4,6 +4,7 @@ import ServiceSection from "@/components/Home/ServiceSection/Index";
 import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ContactSection from "@/components/Home/ContactSection/Index";
 import TestimonialSection from "@/components/Home/TestimonialSection/Index";
+import DownloadAppSection from "@/components/Home/DownloadAppSection/Index";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <SuccessCountDown />
       <ContactSection />
       <TestimonialSection />
+      {/* <DownloadAppSection /> */}
     </>
   );
 }
