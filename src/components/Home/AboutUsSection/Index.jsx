@@ -65,97 +65,102 @@ const AboutUsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
-            className="relative"
+            className="relative grid pt-16 grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-1 items-center"
           >
             {/* Female Doctor */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportOptions}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative mb-8"
-            >
-              <div className="relative bg-[#F46700] rounded-3xl p-4 sm:p-6 overflow-hidden">
-                <div className="relative z-10">
-                  <Image
-                    src="/images/HomeAboutUs/LeftFemaleDoctor.png"
-                    alt="Female Doctor"
-                    width={400}
-                    height={500}
-                    className="object-contain w-full h-auto"
-                  />
-                </div>
-              </div>
-
-              {/* ISO Certification Badge */}
+            <div className="w-full">
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOptions}
-                transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
-                className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20"
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative mb-8 w-full h-[400px] rounded-3xl  sm:p-6"
               >
                 <Image
-                  src="/images/HomeAboutUs/certificationImage.png"
-                  alt="ISO 9001 Quality Management Certification"
-                  width={150}
-                  height={150}
-                  className="object-contain"
+                  src="/images/HomeAboutUs/LeftFemaleDoctor.png"
+                  alt="Female Doctor"
+                  fill
+                  className="object-contain  w-full h-auto"
                 />
+
+                {/* ISO Certification Badge */}
               </motion.div>
-            </motion.div>
 
-            {/* Patient Count Statistic */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={viewportOptions}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-6"
-            >
-              <div className="text-6xl sm:text-7xl font-bold text-[#1a1a2e] mb-2">
-                25K
-              </div>
-              <p className="text-lg text-[#4A4A4A]">
-                <span className="text-[#F46700] font-semibold">
-                  Patients Cared
-                </span>{" "}
-                With Compassion
-              </p>
-            </motion.div>
-
-            {/* Descriptive Text */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportOptions}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base text-[#4A4A4A] mb-8 max-w-md"
-            >
-              Providing exceptional healthcare built on empathy, trust, and
-              long-term patient relationships across all ages.
-            </motion.p>
-
-            {/* Male Doctor */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportOptions}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="relative"
-            >
-              <div className="relative bg-[#F46700] rounded-3xl p-4 sm:p-6 overflow-hidden">
-                <div className="relative z-10">
+              {/* Patient Count Statistic */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewportOptions}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mb-6 flex gap-2 justify-center lg:justify-start"
+              >
+                <div className="text-6xl sm:text-5xl font-bold text-[#1a1a2e] mb-2">
+                  25K
+                </div>
+                <p className="text-lg text-[#4A4A4A]">
+                  <span className="text-[#F46700] font-semibold block">
+                    Patients Cared
+                  </span>{" "}
+                  <span className="text-[#1a1a2e] font-bold">
+                    With Compassion
+                  </span>
+                </p>
+              </motion.div>
+              {/* Descriptive Text */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOptions}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-base text-[#4A4A4A] mb-8 max-w-md mx-auto lg:mx-0"
+              >
+                Providing exceptional healthcare built on empathy, trust, and
+                long-term patient relationships across all ages.
+              </motion.p>
+            </div>
+            <div>
+              <div className="flex  gap-2">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={viewportOptions}
+                  transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
+                >
                   <Image
-                    src="/images/HomeAboutUs/RightMaleDcotor.png"
-                    alt="Male Doctor"
-                    width={400}
-                    height={500}
-                    className="object-contain w-full h-auto"
+                    src="/images/HomeAboutUs/certificationImage.png"
+                    alt="ISO 9001 Quality Management Certification"
+                    width={80}
+                    height={80}
+                    className="object-contain"
                   />
+                </motion.div>
+                <div>
+                  <p className="text-sm text-[#F46700]">ISO 9001</p>
+                  <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
+                    {" "}
+                    Quality Management Certification
+                  </h3>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Male Doctor */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOptions}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative mb-8 w-full h-[400px] rounded-3xl  sm:p-6"
+              >
+                <Image
+                  src="/images/HomeAboutUs/RightMaleDcotor.png"
+                  alt="Female Doctor"
+                  fill
+                  className="object-contain  w-full h-auto"
+                />
+
+                {/* ISO Certification Badge */}
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Section - Content */}
@@ -176,8 +181,9 @@ const AboutUsSection = () => {
             {/* Main Heading */}
             <motion.div variants={itemVariants}>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-[#1a1a2e]">Healthcare made simple, for</span>
-                <br />
+                <span className="text-[#1a1a2e]">
+                  Healthcare made simple, for
+                </span>{" "}
                 <span className="text-[#F46700]">everyone</span>
               </h2>
             </motion.div>
@@ -187,16 +193,13 @@ const AboutUsSection = () => {
               variants={itemVariants}
               className="text-lg text-[#4A4A4A] leading-relaxed max-w-xl"
             >
-              We treat medicine as more than science. It&apos;s a journey of hope,
-              guided by compassion, courage, and a commitment to help you live
-              healthier, longer, and happier.
+              We treat medicine as more than science. It&apos;s a journey of
+              hope, guided by compassion, courage, and a commitment to help you
+              live healthier, longer, and happier.
             </motion.p>
 
             {/* Features List */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-4"
-            >
+            <motion.div variants={itemVariants} className="space-y-4">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -215,10 +218,7 @@ const AboutUsSection = () => {
             </motion.div>
 
             {/* CTA Button */}
-            <motion.div
-              variants={itemVariants}
-              className="pt-4"
-            >
+            <motion.div variants={itemVariants} className="pt-4">
               <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
                 Find a Doctor
               </ThemeButton>
