@@ -154,8 +154,8 @@ export default function Header() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors relative ${
                   pathname === link.href
-                    ? "text-[#F46700]"
-                    : "text-[#4A4A4A] hover:text-[#F46700]"
+                    ? "text-[]"
+                    : "text-[#4A4A4A] hover:text-primary"
                 }`}
               >
                 <motion.span whileHover={{ y: -2 }} className="block relative">
@@ -163,7 +163,7 @@ export default function Header() {
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#F46700]"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                       initial={false}
                       transition={{
                         type: "spring",
@@ -272,8 +272,8 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`text-sm font-medium transition-colors block ${
                       pathname === link.href
-                        ? "text-[#F46700]"
-                        : "text-[#4A4A4A] hover:text-[#F46700]"
+                        ? "text-primary"
+                        : "text-[#4A4A4A] hover:text-primary"
                     }`}
                   >
                     <motion.span whileHover={{ x: 5 }} className="inline-block">

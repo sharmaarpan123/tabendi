@@ -44,11 +44,11 @@ export default function ThemeButton({
     "flex items-center justify-center gap-2 font-medium transition-colors rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantStyles = {
-    primary: "bg-[#F46700] text-white hover:bg-[#E05A00] active:bg-[#D04D00]",
+    primary: "bg-primary text-white hover:bg-[#E05A00] active:bg-[#D04D00]",
     secondary:
-      "bg-white text-[#F46700] border border-[#F46700] hover:bg-[#FFFBF6] active:bg-[#FFF5E6]",
+      "bg-white text-primary border border-primary hover:bg-[#FFFBF6] active:bg-[#FFF5E6]",
     outline:
-      "bg-transparent text-[#4A4A4A] border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-[#F46700] hover:text-[#F46700] active:bg-[#FFF5E6]",
+      "bg-transparent text-[#4A4A4A] border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-primary hover:text-primary active:bg-[#FFF5E6]",
   };
 
   const sizeStyles = {
@@ -65,7 +65,7 @@ export default function ThemeButton({
   const defaultIcon = icon ? (
     icon
   ) : isArrowIcon ? (
-    <ArrowIcon color={variant === "primary" ? "white" : "#F46700"} />
+    <ArrowIcon color={variant === "primary" ? "white" : "var(--primary)"} />
   ) : null;
 
 

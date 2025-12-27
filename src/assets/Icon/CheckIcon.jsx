@@ -1,6 +1,6 @@
 import React from "react";
 
-const CheckIcon = ({ width = 24, height = 24, color = "#F46700" }) => {
+const CheckIcon = ({ width = 24, height = 24, color = "var(--primary)" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,4 +29,3 @@ const CheckIcon = ({ width = 24, height = 24, color = "#F46700" }) => {
 };
 
 export default CheckIcon;
-

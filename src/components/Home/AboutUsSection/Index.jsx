@@ -97,14 +97,14 @@ const AboutUsSection = () => {
                 <div className="text-6xl sm:text-5xl font-bold text-[#1a1a2e] mb-2">
                   25K
                 </div>
-                <p className="text-lg text-[#4A4A4A]">
-                  <span className="text-[#F46700] font-semibold block">
-                    Patients Cared
-                  </span>{" "}
-                  <span className="text-[#1a1a2e] font-bold">
-                    With Compassion
-                  </span>
-                </p>
+                 <p className="text-lg text-[#4A4A4A]">
+                   <span className="text-primary font-semibold block">
+                     Patients Cared
+                   </span>{" "}
+                   <span className="text-[#1a1a2e] font-bold">
+                     With Compassion
+                   </span>
+                 </p>
               </motion.div>
               {/* Descriptive Text */}
               <motion.p
@@ -135,7 +135,7 @@ const AboutUsSection = () => {
                   />
                 </motion.div>
                 <div>
-                  <p className="text-sm text-[#F46700]">ISO 9001</p>
+                  <p className="text-sm text-primary">ISO 9001</p>
                   <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                     {" "}
                     Quality Management Certification
@@ -173,7 +173,7 @@ const AboutUsSection = () => {
           >
             {/* About Us Label */}
             <motion.div variants={itemVariants}>
-              <span className="text-sm font-semibold text-[#F46700] uppercase tracking-wide">
+              <span className="text-sm font-semibold text-[] uppercase tracking-wide">
                 About Us
               </span>
             </motion.div>
@@ -184,7 +184,7 @@ const AboutUsSection = () => {
                 <span className="text-[#1a1a2e]">
                   Healthcare made simple, for
                 </span>{" "}
-                <span className="text-[#F46700]">everyone</span>
+                <span className="text-primary">everyone</span>
               </h2>
             </motion.div>
 
@@ -210,7 +210,7 @@ const AboutUsSection = () => {
                   className="flex items-start gap-3"
                 >
                   <div className="shrink-0 mt-1">
-                    <CheckIcon width={24} height={24} color="#F46700" />
+                    <CheckIcon width={24} height={24} color="var(--primary)" />
                   </div>
                   <p className="text-base text-[#4A4A4A]">{feature}</p>
                 </motion.div>

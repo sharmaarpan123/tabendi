@@ -1,6 +1,6 @@
 import React from "react";
 
-const PhoneIcon = ({ width = 16, height = 16, color = "#F46700" }) => {
+const PhoneIcon = ({ width = 16, height = 16, color = "var(--primary)" }) => {
   return (
     <svg
       width={width}

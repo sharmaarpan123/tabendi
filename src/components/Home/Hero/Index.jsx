@@ -95,7 +95,7 @@ const Hero = () => {
                 <span className="text-[#1a1a2e]">Medical & Health</span>
                 <br />
                 <span className="text-[#1a1a2e]">Care </span>
-                <span className="text-[#F46700]">Service</span>
+                <span className="text-primary">Service</span>
               </h1>
             </motion.div>
 
@@ -181,7 +181,7 @@ const Hero = () => {
                 </div>
                 <a
                   href="tel:+917700043200"
-                  className="text-2xl font-bold text-[#F46700] hover:underline"
+                  className="text-2xl font-bold text-primary hover:underline"
                 >
                   +91-77000-43200
                 </a>
