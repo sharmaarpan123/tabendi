@@ -47,16 +47,16 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="w-full sticky top-0 z-50 shadow-sm"
+      className="w-full sticky top-0 z-50 shadow-sm "
     >
       {/* Top Bar - Contact Info & Social Media */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="border-b border-[#E0E0E0]"
+        className="border-b border-[#E0E0E0] bg-bg-cream"
       >
-        <div className="container bg-bg-cream  mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+        <div className=" container   mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           {/* Contact Information - Left */}
           <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-[#4A4A4A]">
             {contactInfo.map((item, index) => {
@@ -115,7 +115,7 @@ export default function Header() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        className="bg-white container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
       >
         {/* Logo - Left */}
         <motion.div
