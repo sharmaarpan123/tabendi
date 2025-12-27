@@ -58,7 +58,7 @@ export default function Header() {
       >
         <div className=" container   mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           {/* Contact Information - Left */}
-          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-[#4A4A4A]">
+          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-text-dark">
             {contactInfo.map((item, index) => {
               const IconComponent = item.icon;
               return (
@@ -155,7 +155,7 @@ export default function Header() {
                 className={`text-sm font-medium transition-colors relative ${
                   pathname === link.href
                     ? "text-[]"
-                    : "text-[#4A4A4A] hover:text-primary"
+                    : "text-text-dark hover:text-primary"
                 }`}
               >
                 <motion.span whileHover={{ y: -2 }} className="block relative">
@@ -220,7 +220,7 @@ export default function Header() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="flex items-center justify-center rounded-lg p-2 text-[#4A4A4A] transition-colors hover:bg-[#FFFBF6] lg:hidden"
+          className="flex items-center justify-center rounded-lg p-2 text-text-dark transition-colors hover:bg-[#FFFBF6] lg:hidden"
           aria-label="Toggle menu"
         >
           <AnimatePresence mode="wait">
@@ -273,7 +273,7 @@ export default function Header() {
                     className={`text-sm font-medium transition-colors block ${
                       pathname === link.href
                         ? "text-primary"
-                        : "text-[#4A4A4A] hover:text-primary"
+                        : "text-text-dark hover:text-primary"
                     }`}
                   >
                     <motion.span whileHover={{ x: 5 }} className="inline-block">

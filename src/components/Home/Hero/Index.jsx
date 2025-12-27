@@ -102,7 +102,7 @@ const Hero = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg text-[#4A4A4A] max-w-xl leading-relaxed"
+              className="text-lg text-text-dark max-w-xl leading-relaxed"
             >
               Our promise is built on integrity, compassion, and reliability.
               Ensuring every patient feels valued, understood, and confident in
@@ -169,7 +169,7 @@ const Hero = () => {
                 <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                   Emergency Cases
                 </h3>
-                <p className="text-sm text-[#4A4A4A] mb-4">
+                <p className="text-sm text-text-dark mb-4">
                   Personalized attention, and continuous support for every
                   patient.
                 </p>
@@ -196,7 +196,7 @@ const Hero = () => {
                 <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                   Doctor Timetable
                 </h3>
-                <p className="text-sm text-[#4A4A4A] mb-4">
+                <p className="text-sm text-text-dark mb-4">
                   Personalized attention, and continuous support for every
                   patient.
                 </p>

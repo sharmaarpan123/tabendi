@@ -97,7 +97,7 @@ const AboutUsSection = () => {
                 <div className="text-6xl sm:text-5xl font-bold text-[#1a1a2e] mb-2">
                   25K
                 </div>
-                 <p className="text-lg text-[#4A4A4A]">
+                 <p className="text-lg text-text-dark">
                    <span className="text-primary font-semibold block">
                      Patients Cared
                    </span>{" "}
@@ -112,7 +112,7 @@ const AboutUsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOptions}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-base text-[#4A4A4A] mb-8 max-w-md mx-auto lg:mx-0"
+                className="text-base text-text-dark mb-8 max-w-md mx-auto lg:mx-0"
               >
                 Providing exceptional healthcare built on empathy, trust, and
                 long-term patient relationships across all ages.
@@ -191,7 +191,7 @@ const AboutUsSection = () => {
             {/* Introductory Paragraph */}
             <motion.p
               variants={itemVariants}
-              className="text-lg text-[#4A4A4A] leading-relaxed max-w-xl"
+              className="text-lg text-text-dark leading-relaxed max-w-xl"
             >
               We treat medicine as more than science. It&apos;s a journey of
               hope, guided by compassion, courage, and a commitment to help you
@@ -212,7 +212,7 @@ const AboutUsSection = () => {
                   <div className="shrink-0 mt-1">
                     <CheckIcon width={24} height={24} color="var(--primary)" />
                   </div>
-                  <p className="text-base text-[#4A4A4A]">{feature}</p>
+                  <p className="text-base text-text-dark">{feature}</p>
                 </motion.div>
               ))}
             </motion.div>

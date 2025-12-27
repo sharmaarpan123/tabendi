@@ -48,7 +48,7 @@ export default function ThemeButton({
     secondary:
       "bg-white text-primary border border-primary hover:bg-[#FFFBF6] active:bg-[#FFF5E6]",
     outline:
-      "bg-transparent text-[#4A4A4A] border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-primary hover:text-primary active:bg-[#FFF5E6]",
+      "bg-transparent text-text-dark border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-primary hover:text-primary active:bg-[#FFF5E6]",
   };
 
   const sizeStyles = {
