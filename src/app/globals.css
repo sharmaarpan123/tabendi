@@ -24,3 +24,11 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
+
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  font-size: 24px;
+  letter-spacing: 2px;
+  rotate: 180deg;
+}
