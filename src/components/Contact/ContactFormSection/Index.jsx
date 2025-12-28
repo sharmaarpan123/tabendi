@@ -30,7 +30,7 @@ const ContactFormSection = () => {
 
   const viewportOptions = {
     once: true,
-    amount: 0.2,
+    amount: 0.1,
   };
 
   const containerVariants = {
@@ -56,13 +56,13 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-white  lg:px-20">
+    <section  className="relative py-16 sm:py-20 lg:py-24 bg-white  lg:px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
-          initial={{ opacity: 0, y: 200 }}
+          initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: -100 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={viewportOptions}
           className="relative -mt-20 lg:-mt-32 z-20"
         >
