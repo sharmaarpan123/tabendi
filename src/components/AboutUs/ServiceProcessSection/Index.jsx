@@ -133,12 +133,22 @@ const ServiceProcessSection = () => {
             <div className="relative flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-8">
               {/* Step 1 */}
               <motion.div
-                variants={itemVariants}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.6,
+                      delay: 0.5,
+                    },
+                  },
+                }}
                 className="relative flex flex-col items-center"
               >
                 {/* Icon Circle */}
-                <div className="relative z-10 mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
+                <div className="relative z-10 mb-6 p-1 rounded-full border-primary border-2">
+                  <div className="w-16 h-16 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
                     <DocumentIcon />
                   </div>
                 </div>
@@ -157,24 +167,33 @@ const ServiceProcessSection = () => {
                 </div>
               </motion.div>
 
-                {/* Arrow 1 - Pointing Up-Right */}
-               
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 4.2,
-                      transition: {
-                        duration: 0.6,
-                      },
-                      rotate: -8
+              {/* Arrow 1 - Pointing Up-Right */}
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                  scale: 0,
+                  translateX: -200,
+                  translateY: -100,
+                }}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 4.5,
+                    transition: {
+                      duration: 0.6,
+                      delay: 0.8,
                     },
-                    
-                  }}
-                  className="hidden lg:block relative z-10"
-                >
+                    translateX: 0,
+                    translateY: 0,
+                    rotate: -8,
+                  },
+                }}
+                className="hidden lg:block relative z-10"
+              >
                 <div className="relative w-16 h-16 lg:w-20 lg:h-20">
                   <Image
                     src="/images/ArrowImg.png"
@@ -187,7 +206,18 @@ const ServiceProcessSection = () => {
 
               {/* Step 2 - Elevated */}
               <motion.div
-                variants={itemVariants}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.6,
+                      delay: 1.2,
+                    },
+                  },
+                }}
                 className="relative flex flex-col items-center md:-mt-12 lg:-mt-16"
               >
                 {/* Step Content - Above Icon */}
@@ -204,8 +234,8 @@ const ServiceProcessSection = () => {
                 </div>
 
                 {/* Icon Circle - Below Text */}
-                <div className="relative z-10 order-1 md:order-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
+                <div className="relative p-1 rounded-full border-primary border-2 z-10 order-1 md:order-2">
+                  <div className="w-16 h-16  rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
                     <DocumentIcon />
                   </div>
                 </div>
@@ -213,22 +243,32 @@ const ServiceProcessSection = () => {
 
               {/* Arrow 2 - Pointing Down-Right */}
               <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 4.2,
-                      transition: {
-                        duration: 0.6,
-                      },
-                      rotate: -38
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 30,
+                    scale: 0,
+                    translateX: -400,
+                    translateY: 100,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 4.5,
+                    transition: {
+                      duration: 1,
+                      delay: 1.4,
                     },
-                    
-                  }}
-                  className="hidden lg:block relative z-10"
+                    translateX: 0,
+                    translateY: 0,
+                  },
+                }}
+                className="hidden lg:block relative z-10"
+              >
+                <div
+                  style={{ rotate: "-38deg" }}
+                  className="relative w-16 h-16 lg:w-20 lg:h-20"
                 >
-                <div className="relative w-16 h-16 lg:w-20 lg:h-20">
                   <Image
                     src="/images/ArrowImg.png"
                     alt="Arrow"
@@ -240,15 +280,30 @@ const ServiceProcessSection = () => {
 
               {/* Step 3 */}
               <motion.div
-                variants={itemVariants}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.6,
+                      delay: 1.8,
+                    },
+                  },
+                }}
                 className="relative flex flex-col items-center"
               >
                 {/* Icon Circle */}
-                <div className="relative z-10 mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
+                <div className="relative z-10 mb-6 p-1 rounded-full border-primary border-2">
+                  <div className="w-16 h-16  rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-lg">
                     <DocumentIcon />
                   </div>
                 </div>
+
+                
+
+                
 
                 {/* Step Content */}
                 <div className="text-center space-y-3 max-w-xs">
@@ -272,4 +327,3 @@ const ServiceProcessSection = () => {
 };
 
 export default ServiceProcessSection;
-

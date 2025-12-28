@@ -4,6 +4,7 @@ import AboutUsServiceSection from "@/components/AboutUs/AboutUsServiceSection/In
 import AboutUsChooseUsSection from "@/components/AboutUs/AboutUsChooseUsSection/Index";
 import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ServiceProcessSection from "@/components/AboutUs/ServiceProcessSection/Index";
+import TestimonialSection from "@/components/Home/TestimonialSection/Index";
 
 const AboutUsPage = () => {
   return (
@@ -13,6 +14,7 @@ const AboutUsPage = () => {
       <SuccessCountDown />
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
+      <TestimonialSection />
     </>
   );
 };

@@ -20,7 +20,7 @@ import ThemeButton from "@/components/ui/ThemeButton";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/blog", label: "Blog" },
+ 
   { href: "/contact", label: "Contact Us" },
 ];
 
