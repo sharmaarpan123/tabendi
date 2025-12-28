@@ -4,8 +4,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Tabendi Healthcare Network",
+  title: "Tabendi HealthCare",
   description: "Tabendi Healthcare Network - Your trusted healthcare partner",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
