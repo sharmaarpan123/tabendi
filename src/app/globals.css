@@ -6,6 +6,7 @@
   --theme-orange: #F46700;
   --primary: #F46700;
   --bg-cream: #fdf6ea;
+  --bg-light-cream: #f4ecdc;
   --text-dark: #4A4A4A;
   --border-light: #E0E0E0;
 }
@@ -16,6 +17,7 @@
   --color-primary: var(--primary);
   --color-theme-orange: var(--theme-orange);
   --color-bg-cream: var(--bg-cream);
+  --color-bg-light-cream: var(--bg-light-cream);
   --color-text-dark: var(--text-dark);
   --color-border-light: var(--border-light);
 }
