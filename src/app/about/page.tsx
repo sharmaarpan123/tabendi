@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import AboutUsHeroSection from "@/components/AboutUs/AboutUsHeroSection/Index";
 
 const AboutUsPage = () => {
   return (
-    <div>AboutUsPage</div>
-  )
-}
+    <>
+      <AboutUsHeroSection />
+    </>
+  );
+};
 
-export default AboutUsPage
+export default AboutUsPage;
