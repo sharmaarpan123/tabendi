@@ -157,11 +157,24 @@ const ServiceProcessSection = () => {
                 </div>
               </motion.div>
 
-              {/* Arrow 1 - Pointing Up-Right */}
-              <motion.div
-                variants={itemVariants}
-                className="hidden md:block relative z-10"
-              >
+                {/* Arrow 1 - Pointing Up-Right */}
+               
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 4.2,
+                      transition: {
+                        duration: 0.6,
+                      },
+                      rotate: -8
+                    },
+                    
+                  }}
+                  className="hidden lg:block relative z-10"
+                >
                 <div className="relative w-16 h-16 lg:w-20 lg:h-20">
                   <Image
                     src="/images/ArrowImg.png"
@@ -200,10 +213,22 @@ const ServiceProcessSection = () => {
 
               {/* Arrow 2 - Pointing Down-Right */}
               <motion.div
-                variants={itemVariants}
-                className="hidden md:block relative z-10"
-              >
-                <div className="relative w-16 h-16 lg:w-20 lg:h-20 rotate-180">
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 4.2,
+                      transition: {
+                        duration: 0.6,
+                      },
+                      rotate: -38
+                    },
+                    
+                  }}
+                  className="hidden lg:block relative z-10"
+                >
+                <div className="relative w-16 h-16 lg:w-20 lg:h-20">
                   <Image
                     src="/images/ArrowImg.png"
                     alt="Arrow"

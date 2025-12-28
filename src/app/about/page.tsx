@@ -12,7 +12,7 @@ const AboutUsPage = () => {
       <AboutUsServiceSection />
       <SuccessCountDown />
       <AboutUsChooseUsSection />
-      {/* <ServiceProcessSection /> */}
+      <ServiceProcessSection />
     </>
   );
 };
