@@ -92,10 +92,10 @@ const ContactFormSection = () => {
                         <EmailIcon width={24} height={24} color="white" />
                       </div>
                       <a
-                        href="mailto:jenny.wilson@Tabendi.com"
+                        href="mailto:support@tabendihealthcarenetwork.com"
                         className="text-base sm:text-lg text-white hover:text-white/80 transition-colors duration-200"
                       >
-                        jenny.wilson@Tabendi.com
+                        support@tabendihealthcarenetwork.com
                       </a>
                     </div>
 
@@ -108,7 +108,7 @@ const ContactFormSection = () => {
                         href="tel:+917986709965"
                         className="text-base sm:text-lg text-white hover:text-white/80 transition-colors duration-200"
                       >
-                        +91 7986709965
+                        630 884 5115
                       </a>
                     </div>
                   </div>

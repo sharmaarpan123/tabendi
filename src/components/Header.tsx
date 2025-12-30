@@ -20,14 +20,17 @@ import ThemeButton from "@/components/ui/ThemeButton";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
- 
+
   { href: "/contact", label: "Contact Us" },
 ];
 
 const contactInfo = [
-  { icon: LocationIcon, text: "08 W 36th St, New York, NY 10001" },
-  { icon: PhoneIcon, text: "+91-77000-43200" },
-  { icon: EmailIcon, text: "contact@example.com" },
+  {
+    icon: LocationIcon,
+    text: "715 W Lake Street, Suite 201, Addison, IL, 60101",
+  },
+  { icon: PhoneIcon, text: "630 884 5115" },
+  { icon: EmailIcon, text: "support@tabendihealthcarenetwork.com" },
 ];
 
 const socialIcons = [
@@ -317,13 +320,9 @@ export default function Header() {
                 </motion.div>
               </motion.div>
             </nav>
-            
           </motion.div>
         )}
-        
-        
       </AnimatePresence>
-      
     </motion.header>
   );
 }

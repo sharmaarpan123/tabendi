@@ -1,18 +1,78 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ThemeButton from "@/components/ui/ThemeButton";
 import CheckIcon from "@/assets/Icon/CheckIcon";
 import { ArrowIcon } from "@/components/ui/ThemeButton";
+const services = [
+  {
+    title: "General Health Check-Up",
+    description:
+      "Comprehensive routine assessments to monitor overall health and detect early medical concerns",
+    features: [
+      "Excellent Laboratory",
+      "World Class Infrastructure",
+      "Expert Medical Team",
+    ],
+    image: "/images/HomeService/HomeServiceLeftDoctor.png",
+  },
+  {
+    title: "Cardiology Consultation",
+    description:
+      "Expert heart health evaluation and cardiovascular care from certified cardiologists",
+    features: [
+      "Advanced ECG Testing",
+      "Heart Health Monitoring",
+      "Personalized Treatment Plans",
+    ],
+    image: "/images/HomeService/HomeServiceRightDoctor.png",
+  },
+  {
+    title: "Neurology Services",
+    description:
+      "Specialized neurological care and brain health assessments for optimal cognitive function",
+    features: ["Brain Imaging", "Neurological Exams", "Expert Consultation"],
+    image: "/images/HomeService/HomeServiceRightDoctor.png",
+  },
+  {
+    title: "Pediatric Care",
+    description:
+      "Comprehensive healthcare services for children with specialized pediatric expertise",
+    features: [
+      "Child-Friendly Environment",
+      "Vaccination Services",
+      "Growth Monitoring",
+    ],
+    image: "/images/HomeService/HomeServiceRightDoctor.png",
+  },
+  {
+    title: "Pediatric Care",
+    description:
+      "Comprehensive healthcare services for children with specialized pediatric expertise",
+    features: [
+      "Child-Friendly Environment",
+      "Vaccination Services",
+      "Growth Monitoring",
+    ],
+    image: "/images/HomeService/HomeServiceRightDoctor.png",
+  },
+  {
+    title: "Pediatric Care",
+    description:
+      "Comprehensive healthcare services for children with specialized pediatric expertise",
+    features: [
+      "Child-Friendly Environment",
+      "Vaccination Services",
+      "Growth Monitoring",
+    ],
+    image: "/images/HomeService/HomeServiceRightDoctor.png",
+  },
+];
 
 const ServiceSection = () => {
-  const features = [
-    "Excellent Laboratory",
-    "World Class Infrastructure",
-    "Excellent Laboratory",
-  ];
+  const [expandedIndex, setExpandedIndex] = useState(0);
 
   const viewportOptions = {
     once: true,
@@ -73,103 +133,126 @@ const ServiceSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Main Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-          {/* Left Card - General Health Check-Up */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportOptions}
-            transition={{ duration: 0.8 }}
-            className=" bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              {/* Image */}
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/HomeService/HomeServiceLeftDoctor.png"
-                  alt="General Health Check-Up"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+        {/* Main Content Area - Expandable Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 mb-12">
+          {services.map((service, index) => {
+            const isExpanded = expandedIndex === index;
 
-              {/* Content */}
-              <div className="space-y-4">
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#1a1a2e]">
-                  General Health Check-Up
-                </h3>
-                <p className="text-base text-text-dark leading-relaxed">
-                  Comprehensive routine assessments to monitor overall health
-                  and detect early medical concerns
-                </p>
-
-                {/* Features List */}
-                <ul className="space-y-3">
-                  {features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={viewportOptions}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                      className="flex items-center gap-3"
-                    >
-                      <CheckIcon width={20} height={20} />
-                      <span className="text-base text-text-dark">
-                        {feature}
-                      </span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Button */}
-                <div className="pt-4">
-                  <ThemeButton variant="primary" size="md" isArrowIcon={true}>
-                    Book an Appointment
-                  </ThemeButton>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Cards - Cardiology Consultation */}
-          <div className="grid   lg:grid-cols-4 h-full gap-4">
-            {[1, 2, 3, 4].map((item, index) => (
+            return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOptions}
                 transition={{ duration: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="relative h-48 rounded-2xl h-full overflow-hidden shadow-lg cursor-pointer group"
+                onHoverStart={() => setExpandedIndex(index)}
+                className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
+                  isExpanded
+                    ? "lg:col-span-2 bg-white"
+                    : "lg:col-span-1 bg-white"
+                }`}
               >
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
+                <AnimatePresence mode="popLayout">
+                  {isExpanded ? (
+                    // Expanded View - Full Content
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0.5 }}
+                      transition={{ duration: 0.8 }}
+                      className="p-6 sm:p-8"
+                      key={"expanded"}
+                    >
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        {/* Image */}
+                        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
 
-                {/* Image */}
-                <Image
-                  src="/images/HomeService/HomeServiceRightDoctor.png"
-                  alt="Cardiology Consultation"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+                        {/* Content */}
+                        <div className="space-y-4">
+                          <h3 className="text-2xl sm:text-3xl font-bold text-[#1a1a2e]">
+                            {service.title}
+                          </h3>
+                          <p className="text-base text-text-dark leading-relaxed">
+                            {service.description}
+                          </p>
 
-                {/* Content */}
-                <div className="absolute inset-0 z-20 flex flex-col justify-center items-center p-4">
-                  <div className="z-30 bg-white rounded-lg p-2 shadow-md">
-                    <ArrowIcon color="var(--primary)" />
-                  </div>
-                  <h4 className="text-white text-lg font-semibold text-center mb-2 h-full vertical-text">
-                    Cardiology Consultation
-                  </h4>
-                </div>
+                          {/* Features List */}
+                          <ul className="space-y-3">
+                            {service.features.map((feature, featureIndex) => (
+                              <motion.li
+                                key={featureIndex}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{
+                                  duration: 0.5,
+                                  delay: 0.3 + featureIndex * 0.1,
+                                }}
+                                className="flex items-center gap-3"
+                              >
+                                <CheckIcon width={20} height={20} />
+                                <span className="text-base text-text-dark">
+                                  {feature}
+                                </span>
+                              </motion.li>
+                            ))}
+                          </ul>
 
-                {/* Arrow Icon */}
+                          {/* Button */}
+                          <div className="pt-4">
+                            <ThemeButton
+                              variant="primary"
+                              size="md"
+                              isArrowIcon={true}
+                            >
+                              Book an Appointment
+                            </ThemeButton>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    // Collapsed View - Minimal Content
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0.5 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0.5 }}
+                      transition={{ duration: 0.8 }}
+                      className="relative h-48 lg:h-full min-h-[200px]"
+                      key={"collapsed"}
+                    >
+                      {/* Dark Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
+
+                      {/* Image */}
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+
+                      {/* Content */}
+                      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center p-4">
+                        <div className="z-30 bg-white rounded-lg p-2 shadow-md mb-3">
+                          <ArrowIcon color="var(--primary)" />
+                        </div>
+                        <h4 className="text-white text-lg font-semibold text-center">
+                          {service.title}
+                        </h4>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA Button */}
