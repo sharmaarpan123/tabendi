@@ -135,10 +135,10 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <EmailIcon width={20} height={20} color="var(--text-dark)" />
                 <a
-                  href="mailto:support@tabandi.com"
+                  href="mailto:support@tabendihealthcarenetwork.com"
                   className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
                 >
-                  support@tabandi.com
+                  support@tabendihealthcarenetwork.com
                 </a>
               </div>
             </motion.div>
@@ -169,7 +169,8 @@ const Footer = () => {
 
             {/* Right Side - Copyright */}
             <div className="text-sm text-white text-center sm:text-right">
-              © 2025 Tabandi, Inc. All rights reserved.
+              © {new Date().getFullYear()} Tabendi Healthcare Network, Inc. All
+              rights reserved.
             </div>
           </div>
         </div>

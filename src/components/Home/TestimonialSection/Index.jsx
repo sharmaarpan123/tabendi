@@ -124,17 +124,17 @@ const TestimonialSection = () => {
                     variants={itemVariants}
                     className="bg-bg-cream rounded-3xl p-6 sm:p-8 h-full shadow-lg"
                   >
-                    {/* Quote Icon */}
+                   
                     <div className="mb-6">
                       <QuoteIcon />
                     </div>
 
-                    {/* Testimonial Text */}
+                   
                     <p className="text-base text-text-dark leading-relaxed mb-6">
                       {testimonial.text}
                     </p>
 
-                    {/* Profile Section */}
+                    
                     <div className="flex items-center gap-4">
                       <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
                         <Image
@@ -215,11 +215,11 @@ const TestimonialSection = () => {
             </motion.p>
 
             {/* CTA Button */}
-            <motion.div variants={itemVariants} className="pt-4">
+            {/* <motion.div variants={itemVariants} className="pt-4">
               <ThemeButton variant="primary" size="lg" isArrowIcon={false}>
                 View More
               </ThemeButton>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

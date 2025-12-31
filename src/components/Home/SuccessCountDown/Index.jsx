@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 
-const SuccessCountDown = () => {
+const SuccessCountDown = ({ floatingToTop = false }) => {
   const profileImages = [
     "/images/Hero/randomUser1.png",
     "/images/Hero/randomUser2.png",
@@ -73,9 +73,10 @@ const SuccessCountDown = () => {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, translateY: floatingToTop ? 0 : 0 },
     visible: {
       opacity: 1,
+      translateY: floatingToTop ? -100 : 0,
       transition: {
         staggerChildren: 0.2,
         delayChildren: 0.1,
@@ -96,7 +97,7 @@ const SuccessCountDown = () => {
   };
 
   return (
-    <section className="relative py-16  overflow-hidden">
+    <section className="relative py-16  ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -120,7 +121,10 @@ const SuccessCountDown = () => {
           <div className="relative z-10 p-8 sm:p-12 lg:p-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Section - Appointment Booking */}
-              <motion.div variants={itemVariants} className="space-y-6 flex flex-col justify-center  md:justify-start">
+              <motion.div
+                variants={itemVariants}
+                className="space-y-6 flex flex-col justify-center  md:justify-start"
+              >
                 {/* Profile Images */}
                 <div className="flex items-center -space-x-3 mb-4">
                   {profileImages.map((img, index) => (
@@ -153,18 +157,21 @@ const SuccessCountDown = () => {
                 </p>
               </motion.div>
 
-               {/* Right Section - Statistics */}
-               <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-8">
-                 {statistics.map((stat, index) => (
-                   <Counter
-                     key={index}
-                     value={stat.number}
-                     suffix={stat.suffix}
-                     label={stat.label}
-                     delay={index * 0.1}
-                   />
-                 ))}
-               </motion.div>
+              {/* Right Section - Statistics */}
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col md:flex-row gap-8"
+              >
+                {statistics.map((stat, index) => (
+                  <Counter
+                    key={index}
+                    value={stat.number}
+                    suffix={stat.suffix}
+                    label={stat.label}
+                    delay={index * 0.1}
+                  />
+                ))}
+              </motion.div>
             </div>
           </div>
         </motion.div>

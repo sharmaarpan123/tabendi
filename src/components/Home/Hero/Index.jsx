@@ -37,44 +37,31 @@ const Hero = () => {
     },
   };
 
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, x: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
   const viewportOptions = {
     once: true, // Only animate once when it first comes into view
     amount: 0.2, // Trigger when 20% of the element is visible
   };
 
   return (
-    <section className="mx-auto  container bg-bg-cream relative   rounded-3xl ">
+    <section className="mx-auto  container  relative   rounded-3xl ">
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none ">
         <motion.div
-          initial={{ opacity: 0, rotate: 0 }}
-          animate={{ opacity: 0.1, rotate: 360 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
           transition={{
-            duration: 20,
-            repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -right-40 -top-40 w-96 h-96"
         >
-          <Image
-            src="/images/Hero/rotatingSpiral.png"
+          <video
+            src="/TBHN.mp4"
             alt="Background pattern"
-            width={400}
-            height={400}
-            className="object-contain"
+            className="object-contain h-full w-full"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={false}
           />
         </motion.div>
       </div>
@@ -102,7 +89,7 @@ const Hero = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg text-text-dark max-w-xl leading-relaxed"
+              className="text-lg  max-w-xl leading-relaxed"
             >
               Our promise is built on integrity, compassion, and reliability.
               Ensuring every patient feels valued, understood, and confident in
@@ -112,7 +99,7 @@ const Hero = () => {
             {/* Find a Doctor Section */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-4 flex-wrap"
+              className="flex items-center gap-4 flex-wrap md:mt-4"
             >
               <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
                 Find a Doctor
@@ -183,7 +170,7 @@ const Hero = () => {
                   href="tel:+917700043200"
                   className="text-2xl font-bold text-primary hover:underline"
                 >
-                  +91-77000-43200
+                  630 884 5115
                 </a>
               </motion.div>
 
@@ -205,68 +192,17 @@ const Hero = () => {
                   size="sm"
                   isArrowIcon={false}
                   className="w-full sm:w-auto"
+                  onClick={() =>
+                    window.open(
+                      process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
+                      "_blank"
+                    )
+                  }
                 >
                   Timetable <span className="ml-1 text-lg font-bold">+</span>
                 </ThemeButton>
               </motion.div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Section - Doctor Image */}
-          <motion.div
-            variants={imageVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
-            className="relative h-full pt-16 overflow-hidden  flex items-center justify-center"
-          >
-            <div className="lg:absolute static lg:bottom-0">
-              {/* Background Pattern Behind Doctor */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1.5 }}
-                viewport={viewportOptions}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="absolute -z-10 lg:w-full h-full flex items-center justify-center"
-              >
-                <motion.div
-                  className="relative w-96 h-96"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <Image
-                    src="/images/Hero/rotatingSpiral.png"
-                    alt="Background pattern"
-                    width={400}
-                    height={400}
-                    className="object-contain"
-                  />
-                </motion.div>
-              </motion.div>
-
-              {/* Doctor Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={viewportOptions}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-                className="relative z-10"
-              >
-                <Image
-                  src="/images/Hero/HeroGirl.png"
-                  alt="Healthcare Professional"
-                  width={600}
-                  height={800}
-                  className="object-contain max-h-[600px] w-auto"
-                  priority
-                />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>

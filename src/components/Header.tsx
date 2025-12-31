@@ -198,6 +198,9 @@ export default function Header() {
               size="sm"
               className="sm:px-4 sm:py-2.5 sm:text-sm"
               isArrowIcon={true}
+              onClick={() =>
+                window.open(process.env.NEXT_PUBLIC_PATIENT_WEB_URL, "_blank")
+              }
             >
               Make Appointment
             </ThemeButton>
@@ -212,6 +215,9 @@ export default function Header() {
               size="sm"
               className="sm:px-4 sm:py-2.5 sm:text-sm"
               isArrowIcon={true}
+              onClick={() =>
+                window.open(process.env.NEXT_PUBLIC_DOCTOR_WEB_URL, "_blank")
+              }
             >
               Join as Doctor
             </ThemeButton>

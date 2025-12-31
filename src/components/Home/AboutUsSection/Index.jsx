@@ -97,14 +97,14 @@ const AboutUsSection = () => {
                 <div className="text-6xl sm:text-5xl font-bold text-[#1a1a2e] mb-2">
                   25K
                 </div>
-                 <p className="text-lg text-text-dark">
-                   <span className="text-primary font-semibold block">
-                     Patients Cared
-                   </span>{" "}
-                   <span className="text-[#1a1a2e] font-bold">
-                     With Compassion
-                   </span>
-                 </p>
+                <p className="text-lg text-text-dark">
+                  <span className="text-primary font-semibold block">
+                    Patients Cared
+                  </span>{" "}
+                  <span className="text-[#1a1a2e] font-bold">
+                    With Compassion
+                  </span>
+                </p>
               </motion.div>
               {/* Descriptive Text */}
               <motion.p
@@ -173,7 +173,7 @@ const AboutUsSection = () => {
           >
             {/* About Us Label */}
             <motion.div variants={itemVariants}>
-              <span className="text-sm font-semibold text-[] uppercase tracking-wide">
+              <span className="text-2xl font-semibold text-primary  tracking-wide">
                 About Us
               </span>
             </motion.div>
@@ -219,7 +219,14 @@ const AboutUsSection = () => {
 
             {/* CTA Button */}
             <motion.div variants={itemVariants} className="pt-4">
-              <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
+              <ThemeButton
+                onClick={() =>
+                  window.open(process.env.NEXT_PUBLIC_PATIENT_WEB_URL, "_blank")
+                }
+                variant="primary"
+                size="lg"
+                isArrowIcon={true}
+              >
                 Find a Doctor
               </ThemeButton>
             </motion.div>

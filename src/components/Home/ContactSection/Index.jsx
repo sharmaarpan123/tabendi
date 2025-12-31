@@ -5,8 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ThemeButton from "@/components/ui/ThemeButton";
 import CheckIcon from "@/assets/Icon/CheckIcon";
+import { useRouter } from "next/navigation";
 
 const ContactSection = () => {
+  const router = useRouter();
   const features = [
     "Trusted doctors, all in one place",
     "Appointments without the wait",
@@ -68,7 +70,7 @@ const ContactSection = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center my-8">
-            <div></div>
+          <div></div>
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -76,7 +78,7 @@ const ContactSection = () => {
             viewport={viewportOptions}
             className="relative"
           >
-            <div className="bg-white rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl">
+            <div style={{background:"rgba(255, 255, 255, 0.6)" , }} className=" rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl">
               {/* Top Label */}
               <motion.div variants={itemVariants}>
                 <span className="text-sm font-semibold text-primary uppercase tracking-wide">
@@ -89,8 +91,8 @@ const ContactSection = () => {
                 variants={itemVariants}
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] mt-4 mb-6 leading-tight"
               >
-                Our mission is to provide{" "}
-                <span className="text-primary">good health</span> for everybody.
+                Our mission is to provide good{" "}
+                <span className="text-primary"> health for everybody.</span>
               </motion.h2>
 
               {/* Descriptive Paragraph */}
@@ -124,7 +126,12 @@ const ContactSection = () => {
 
               {/* CTA Button */}
               <motion.div variants={itemVariants}>
-                <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
+                <ThemeButton
+                  onClick={() => router.push("/contact")}
+                  variant="primary"
+                  size="lg"
+                  isArrowIcon={true}
+                >
                   Contact Us
                 </ThemeButton>
               </motion.div>

@@ -11,7 +11,9 @@ const AboutUsPage = () => {
     <>
       <AboutUsHeroSection />
       <AboutUsServiceSection />
-      <SuccessCountDown />
+
+      <SuccessCountDown floatingToTop={true} />
+
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
       <TestimonialSection />

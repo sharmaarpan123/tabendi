@@ -27,14 +27,14 @@ const services = [
       "Heart Health Monitoring",
       "Personalized Treatment Plans",
     ],
-    image: "/images/HomeService/HomeServiceRightDoctor.png",
+    image: "/images/HomeService/HomeServiceLeftDoctor.png",
   },
   {
     title: "Neurology Services",
     description:
       "Specialized neurological care and brain health assessments for optimal cognitive function",
     features: ["Brain Imaging", "Neurological Exams", "Expert Consultation"],
-    image: "/images/HomeService/HomeServiceRightDoctor.png",
+    image: "/images/HomeService/HomeServiceLeftDoctor.png",
   },
   {
     title: "Pediatric Care",
@@ -45,29 +45,7 @@ const services = [
       "Vaccination Services",
       "Growth Monitoring",
     ],
-    image: "/images/HomeService/HomeServiceRightDoctor.png",
-  },
-  {
-    title: "Pediatric Care",
-    description:
-      "Comprehensive healthcare services for children with specialized pediatric expertise",
-    features: [
-      "Child-Friendly Environment",
-      "Vaccination Services",
-      "Growth Monitoring",
-    ],
-    image: "/images/HomeService/HomeServiceRightDoctor.png",
-  },
-  {
-    title: "Pediatric Care",
-    description:
-      "Comprehensive healthcare services for children with specialized pediatric expertise",
-    features: [
-      "Child-Friendly Environment",
-      "Vaccination Services",
-      "Growth Monitoring",
-    ],
-    image: "/images/HomeService/HomeServiceRightDoctor.png",
+    image: "/images/HomeService/HomeServiceLeftDoctor.png",
   },
 ];
 
@@ -126,7 +104,7 @@ const ServiceSection = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-text-dark max-w-2xl mx-auto"
+            className="text-lg text-text-dark max-w-2xl mx-auto pt-2"
           >
             Your health is our top priority. Schedule an appointment with us
             today
@@ -134,7 +112,7 @@ const ServiceSection = () => {
         </motion.div>
 
         {/* Main Content Area - Expandable Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 mb-12">
           {services.map((service, index) => {
             const isExpanded = expandedIndex === index;
 
@@ -148,7 +126,7 @@ const ServiceSection = () => {
                 onHoverStart={() => setExpandedIndex(index)}
                 className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
                   isExpanded
-                    ? "lg:col-span-2 bg-white"
+                    ? "lg:col-span-3 bg-white"
                     : "lg:col-span-1 bg-white"
                 }`}
               >
@@ -210,6 +188,12 @@ const ServiceSection = () => {
                               variant="primary"
                               size="md"
                               isArrowIcon={true}
+                              onClick={() =>
+                                window.open(
+                                  process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
+                                  "_blank"
+                                )
+                              }
                             >
                               Book an Appointment
                             </ThemeButton>
