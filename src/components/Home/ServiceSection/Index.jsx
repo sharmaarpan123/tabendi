@@ -1,56 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeButton from "@/components/ui/ThemeButton";
 import CheckIcon from "@/assets/Icon/CheckIcon";
 import { ArrowIcon } from "@/components/ui/ThemeButton";
-const services = [
-  {
-    title: "General Health Check-Up",
-    description:
-      "Comprehensive routine assessments to monitor overall health and detect early medical concerns",
-    features: [
-      "Excellent Laboratory",
-      "World Class Infrastructure",
-      "Expert Medical Team",
-    ],
-    image: "/images/HomeService/HomeServiceLeftDoctor.png",
-  },
-  {
-    title: "Cardiology Consultation",
-    description:
-      "Expert heart health evaluation and cardiovascular care from certified cardiologists",
-    features: [
-      "Advanced ECG Testing",
-      "Heart Health Monitoring",
-      "Personalized Treatment Plans",
-    ],
-    image: "/images/HomeService/HomeServiceLeftDoctor.png",
-  },
-  {
-    title: "Neurology Services",
-    description:
-      "Specialized neurological care and brain health assessments for optimal cognitive function",
-    features: ["Brain Imaging", "Neurological Exams", "Expert Consultation"],
-    image: "/images/HomeService/HomeServiceLeftDoctor.png",
-  },
-  {
-    title: "Pediatric Care",
-    description:
-      "Comprehensive healthcare services for children with specialized pediatric expertise",
-    features: [
-      "Child-Friendly Environment",
-      "Vaccination Services",
-      "Growth Monitoring",
-    ],
-    image: "/images/HomeService/HomeServiceLeftDoctor.png",
-  },
-];
 
-const ServiceSection = () => {
+const ServiceSection = ({ categories = [] }) => {
   const [expandedIndex, setExpandedIndex] = useState(0);
+
+  // Transform categories to services format
+  const services = useMemo(() => {
+    // Filter only top-level categories (parent_id === null) and limit to first 6
+    const topLevelCategories = categories
+      .filter((cat) => cat.parent_id === null && cat.status === 1)
+      .slice(0, 6);
+
+    return topLevelCategories.map((category) => {
+      // Parse description to extract features (bullet points)
+      const features = category.description
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith("•") || line.startsWith("-"))
+        .map((line) => line.replace(/^[•\-]\s*/, "").trim())
+        .filter((line) => line.length > 0)
+        .slice(0, 5); // Limit to 5 features max
+
+      // Get a short description (first sentence or first 150 characters)
+      const description = category.description
+        .split(/\r?\n/)[0]
+        .replace(/^[•\-]\s*/, "")
+        .trim()
+        .substring(0, 150);
+
+      return {
+        id: category.id,
+        title: category.title,
+        description: description || category.title,
+        features: features.length > 0 ? features : [category.title],
+        image: category.icon || "/images/HomeService/HomeServiceLeftDoctor.png",
+      };
+    });
+  }, [categories]);
 
   const viewportOptions = {
     once: true,
@@ -112,13 +104,14 @@ const ServiceSection = () => {
         </motion.div>
 
         {/* Main Content Area - Expandable Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 mb-12">
-          {services.map((service, index) => {
-            const isExpanded = expandedIndex === index;
+        {services.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 mb-12">
+            {services.map((service, index) => {
+              const isExpanded = expandedIndex === index;
 
-            return (
-              <motion.div
-                key={index}
+              return (
+                <motion.div
+                  key={service.id || index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOptions}
@@ -235,9 +228,14 @@ const ServiceSection = () => {
                   )}
                 </AnimatePresence>
               </motion.div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-text-dark">No services available at the moment.</p>
+          </div>
+        )}
 
         {/* Bottom CTA Button */}
         <motion.div

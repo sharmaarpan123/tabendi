@@ -5,18 +5,18 @@ import AboutUsChooseUsSection from "@/components/AboutUs/AboutUsChooseUsSection/
 import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ServiceProcessSection from "@/components/AboutUs/ServiceProcessSection/Index";
 import TestimonialSection from "@/components/Home/TestimonialSection/Index";
+import { getTestimonialsData } from "@/services/homePageService";
 
-const AboutUsPage = () => {
+const AboutUsPage = async () => {
+  const testimonialsData = await getTestimonialsData();
   return (
     <>
       <AboutUsHeroSection />
       <AboutUsServiceSection />
-
       <SuccessCountDown floatingToTop={true} />
-
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
-      <TestimonialSection />
+      <TestimonialSection testimonials={testimonialsData?.data?.data || []} />
     </>
   );
 };

@@ -39,3 +39,7 @@ body {
 .swiper-pagination-bullet-active-custom {
   background: var(--primary) !important;
 }
+
+.swiper-slide {
+  height: unset !important;
+}

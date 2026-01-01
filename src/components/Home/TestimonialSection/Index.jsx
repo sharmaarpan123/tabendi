@@ -10,37 +10,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const TestimonialSection = () => {
-  const testimonials = [
-    {
-      id: 1,
-      text: "Their support and compassion truly stand out. I'm incredibly thankful for the personalized care that brought back my comfort, confidence, and well-being.",
-      name: "David Lee",
-      role: "Rehabilitation Program Patient",
-      image: "/images/Hero/randomUser1.png",
-    },
-    {
-      id: 2,
-      text: "Their support and compassion truly stand out. I'm incredibly thankful for the personalized care that brought back my comfort, confidence, and well-being.",
-      name: "Maria Gonzalez",
-      role: "Rehabilitation Program Patient",
-      image: "/images/Hero/randomUser2.png",
-    },
-    {
-      id: 3,
-      text: "Their support and compassion truly stand out. I'm incredibly thankful for the personalized care that brought back my comfort, confidence, and well-being.",
-      name: "Sarah Johnson",
-      role: "Rehabilitation Program Patient",
-      image: "/images/Hero/randomUser3.png",
-    },
-    {
-      id: 4,
-      text: "Their support and compassion truly stand out. I'm incredibly thankful for the personalized care that brought back my comfort, confidence, and well-being.",
-      name: "Michael Chen",
-      role: "Rehabilitation Program Patient",
-      image: "/images/Hero/randomUser4.png",
-    },
-  ];
+const TestimonialSection = ({ testimonials = [] }) => {
+  // Transform API testimonials to component format
+  const transformedTestimonials =
+    testimonials.length > 0
+      ? testimonials.map((testimonial) => {
+          // Extract text from HTML content, removing HTML tags
+          const textContent =
+            testimonial.content
+              ?.replace(/<[^>]*>/g, "")
+              ?.replace(/&quot;/g, '"')
+              ?.replace(/&nbsp;/g, " ")
+              ?.trim() || "Great service!";
+
+          // Extract name, handling cases with roles (e.g., "John M. | Operations Manager")
+          const nameParts = testimonial.name?.split("|") || [];
+          const name = nameParts[0]?.trim() || "Anonymous";
+          const role = nameParts[1]?.trim() || "Patient";
+
+          return {
+            id: testimonial.id,
+            text: textContent,
+            name: name,
+            role: role,
+            image: testimonial.profile_image || "/images/Hero/randomUser1.png",
+            rating: testimonial.rating || 5,
+          };
+        })
+      : [];
 
   const viewportOptions = {
     once: true,
@@ -106,10 +103,10 @@ const TestimonialSection = () => {
                 clickable: true,
                 bulletActiveClass: "swiper-pagination-bullet-active-custom",
               }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
+              // autoplay={{
+              //   delay: 5000,
+              //   disableOnInteraction: false,
+              // }}
               breakpoints={{
                 640: {
                   slidesPerView: 2,
@@ -118,23 +115,20 @@ const TestimonialSection = () => {
               }}
               className="testimonial-swiper"
             >
-              {testimonials.map((testimonial) => (
+              {transformedTestimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.id}>
                   <motion.div
                     variants={itemVariants}
                     className="bg-bg-cream rounded-3xl p-6 sm:p-8 h-full shadow-lg"
                   >
-                   
                     <div className="mb-6">
                       <QuoteIcon />
                     </div>
 
-                   
                     <p className="text-base text-text-dark leading-relaxed mb-6">
                       {testimonial.text}
                     </p>
 
-                    
                     <div className="flex items-center gap-4">
                       <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
                         <Image

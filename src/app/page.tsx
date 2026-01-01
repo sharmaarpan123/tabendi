@@ -4,17 +4,22 @@ import ServiceSection from "@/components/Home/ServiceSection/Index";
 import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ContactSection from "@/components/Home/ContactSection/Index";
 import TestimonialSection from "@/components/Home/TestimonialSection/Index";
-import DownloadAppSection from "@/components/Home/DownloadAppSection/Index";
+import { getHomePageData } from "@/services/homePageService";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch home page data server-side
+  const homePageData = await getHomePageData();
+
   return (
     <>
       <Hero />
       <AboutUsSection />
-      <ServiceSection />
+      <ServiceSection categories={homePageData?.data?.categories || []} />
       <SuccessCountDown />
       <ContactSection />
-      <TestimonialSection />
+      <TestimonialSection
+        testimonials={homePageData?.data?.testimonials || []}
+      />
       {/* <DownloadAppSection /> */}
     </>
   );
