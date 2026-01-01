@@ -9,13 +9,14 @@ import { ArrowIcon } from "@/components/ui/ThemeButton";
 
 const ServiceSection = ({ categories = [] }) => {
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const [showAllServices, setShowAllServices] = useState(false);
 
   // Transform categories to services format
   const services = useMemo(() => {
-    // Filter only top-level categories (parent_id === null) and limit to first 6
-    const topLevelCategories = categories
-      .filter((cat) => cat.parent_id === null && cat.status === 1)
-      .slice(0, 6);
+    // Filter only top-level categories (parent_id === null)
+    const topLevelCategories = categories.filter(
+      (cat) => cat.parent_id === null && cat.status === 1
+    );
 
     return topLevelCategories.map((category) => {
       // Parse description to extract features (bullet points)
@@ -106,155 +107,160 @@ const ServiceSection = ({ categories = [] }) => {
         {/* Main Content Area - Expandable Cards */}
         {services.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 mb-12">
-            {services.map((service, index) => {
+            {(showAllServices ? services : services.slice(0, 4)).map((service, index) => {
               const isExpanded = expandedIndex === index;
 
               return (
                 <motion.div
                   key={service.id || index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportOptions}
-                transition={{ duration: 0.6 + index * 0.1 }}
-                onHoverStart={() => setExpandedIndex(index)}
-                className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
-                  isExpanded
-                    ? "lg:col-span-3 bg-white"
-                    : "lg:col-span-1 bg-white"
-                }`}
-              >
-                <AnimatePresence mode="popLayout">
-                  {isExpanded ? (
-                    // Expanded View - Full Content
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0.5 }}
-                      transition={{ duration: 0.8 }}
-                      className="p-6 sm:p-8"
-                      key={"expanded"}
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                        {/* Image */}
-                        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
-                          <Image
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewportOptions}
+                  transition={{ duration: 0.6 + index * 0.1 }}
+                  onHoverStart={() => setExpandedIndex(index)}
+                  className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
+                    isExpanded
+                      ? "lg:col-span-3 bg-white"
+                      : "lg:col-span-1 bg-white"
+                  }`}
+                >
+                  <AnimatePresence mode="popLayout">
+                    {isExpanded ? (
+                      // Expanded View - Full Content
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0.5 }}
+                        transition={{ duration: 0.8 }}
+                        className="p-6 sm:p-8"
+                        key={"expanded"}
+                      >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                          {/* Image */}
+                          <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
+                            <Image
+                              src={service.image}
+                              alt={service.title}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
 
-                        {/* Content */}
-                        <div className="space-y-4">
-                          <h3 className="text-2xl sm:text-3xl font-bold text-[#1a1a2e]">
-                            {service.title}
-                          </h3>
-                          <p className="text-base text-text-dark leading-relaxed">
-                            {service.description}
-                          </p>
+                          {/* Content */}
+                          <div className="space-y-4">
+                            <h3 className="text-2xl sm:text-3xl font-bold text-[#1a1a2e]">
+                              {service.title}
+                            </h3>
+                            <p className="text-base text-text-dark leading-relaxed">
+                              {service.description}
+                            </p>
 
-                          {/* Features List */}
-                          <ul className="space-y-3">
-                            {service.features.map((feature, featureIndex) => (
-                              <motion.li
-                                key={featureIndex}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{
-                                  duration: 0.5,
-                                  delay: 0.3 + featureIndex * 0.1,
-                                }}
-                                className="flex items-center gap-3"
+                            {/* Features List */}
+                            <ul className="space-y-3">
+                              {service.features.map((feature, featureIndex) => (
+                                <motion.li
+                                  key={featureIndex}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{
+                                    duration: 0.5,
+                                    delay: 0.3 + featureIndex * 0.1,
+                                  }}
+                                  className="flex items-center gap-3"
+                                >
+                                  <CheckIcon width={20} height={20} />
+                                  <span className="text-base text-text-dark">
+                                    {feature}
+                                  </span>
+                                </motion.li>
+                              ))}
+                            </ul>
+
+                            {/* Button */}
+                            <div className="pt-4">
+                              <ThemeButton
+                                variant="primary"
+                                size="md"
+                                isArrowIcon={true}
+                                onClick={() =>
+                                  window.open(
+                                    process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
+                                    "_blank"
+                                  )
+                                }
                               >
-                                <CheckIcon width={20} height={20} />
-                                <span className="text-base text-text-dark">
-                                  {feature}
-                                </span>
-                              </motion.li>
-                            ))}
-                          </ul>
-
-                          {/* Button */}
-                          <div className="pt-4">
-                            <ThemeButton
-                              variant="primary"
-                              size="md"
-                              isArrowIcon={true}
-                              onClick={() =>
-                                window.open(
-                                  process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
-                                  "_blank"
-                                )
-                              }
-                            >
-                              Book an Appointment
-                            </ThemeButton>
+                                Book an Appointment
+                              </ThemeButton>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    // Collapsed View - Minimal Content
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0.5 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0.5 }}
-                      transition={{ duration: 0.8 }}
-                      className="relative h-48 lg:h-full min-h-[200px]"
-                      key={"collapsed"}
-                    >
-                      {/* Dark Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
+                      </motion.div>
+                    ) : (
+                      // Collapsed View - Minimal Content
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0.5 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0.5 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative h-48 lg:h-full min-h-[200px]"
+                        key={"collapsed"}
+                      >
+                        {/* Dark Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
 
-                      {/* Image */}
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
+                        {/* Image */}
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
 
-                      {/* Content */}
-                      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center p-4">
-                        <div className="z-30 bg-white rounded-lg p-2 shadow-md mb-3">
-                          <ArrowIcon color="var(--primary)" />
+                        {/* Content */}
+                        <div className="absolute inset-0 z-20 flex flex-col justify-center items-center p-4">
+                          <div className="z-30 bg-white rounded-lg p-2 shadow-md mb-3">
+                            <ArrowIcon color="var(--primary)" />
+                          </div>
+                          <h4 className="text-white text-lg font-semibold text-center">
+                            {service.title}
+                          </h4>
                         </div>
-                        <h4 className="text-white text-lg font-semibold text-center">
-                          {service.title}
-                        </h4>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               );
             })}
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-text-dark">No services available at the moment.</p>
+            <p className="text-text-dark">
+              No services available at the moment.
+            </p>
           </div>
         )}
 
-        {/* Bottom CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOptions}
-          transition={{ duration: 0.6 }}
-          className="text-center   relative block margin-bottom-10"
-        >
-          <hr height="1px" className="border-border-light mt-28" />
-          <ThemeButton
-            variant="secondary"
-            size="lg"
-            isArrowIcon={false}
-            className="border-2 absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-[50%]"
+        {/* Bottom CTA Button - Only show if there are more than 4 services */}
+        {services.length > 4 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOptions}
+            transition={{ duration: 0.6 }}
+            className="text-center relative block margin-bottom-10"
           >
-            View All Services
-          </ThemeButton>
-        </motion.div>
+            <hr height="1px" className="border-border-light mt-28" />
+            <ThemeButton
+              variant="secondary"
+              size="lg"
+              isArrowIcon={false}
+              onClick={() => setShowAllServices(!showAllServices)}
+              className="border-2 absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-[50%]"
+            >
+              {showAllServices ? "Show Less" : "View All Services"}
+            </ThemeButton>
+          </motion.div>
+        )}
       </div>
     </section>
   );
