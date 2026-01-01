@@ -5,12 +5,20 @@ import { motion } from "framer-motion";
 import EmailIcon from "@/assets/Icon/EmailIcon";
 import PhoneIcon from "@/assets/Icon/PhoneIcon";
 import ThemeButton from "@/components/ui/ThemeButton";
+import { contactUsApi } from "@/services/apiCall";
+import { catchAsync, checkResponse } from "@/utils/commonFunc";
 
 const ContactFormSection = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    phone_number: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({
+    type: null,
     message: "",
   });
 
@@ -22,11 +30,51 @@ const ContactFormSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-  };
+  const handleSubmit = catchAsync(
+    async (e) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+      setSubmitStatus({ type: null, message: "" });
+
+      // Combine firstName and lastName into name
+      const contactData = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone_number: formData.phone_number,
+        message: formData.message,
+      };
+
+      const response = await contactUsApi(contactData);
+
+      if (checkResponse({ res: response })) {
+        setSubmitStatus({
+          type: "success",
+          message:
+            response.message ||
+            "Thank you! Your message has been sent successfully.",
+        });
+
+        // Reset form on success
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone_number: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message:
+            response.message || "Failed to send message. Please try again.",
+        });
+      }
+      setTimeout(() => {
+        setSubmitStatus({ type: null, message: "" });
+      }, 3000);
+    },
+    { setLoader: setIsSubmitting }
+  );
 
   const viewportOptions = {
     once: true,
@@ -56,7 +104,7 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section  className="relative py-16 sm:py-20 lg:py-24 bg-white  lg:px-20">
+    <section className="relative py-16 sm:py-20 lg:py-24 bg-white  lg:px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -183,6 +231,26 @@ const ContactFormSection = () => {
                     />
                   </div>
 
+                  {/* Phone Number */}
+                  <div>
+                    <label
+                      htmlFor="phone_number"
+                      className="block text-sm font-medium text-text-dark mb-2"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone_number"
+                      name="phone_number"
+                      value={formData.phone_number}
+                      onChange={handleChange}
+                      placeholder="+1234567890"
+                      className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark"
+                      required
+                    />
+                  </div>
+
                   {/* Message */}
                   <div>
                     <label
@@ -203,6 +271,21 @@ const ContactFormSection = () => {
                     />
                   </div>
 
+                  {/* Submit Status Message */}
+                  {submitStatus.type && (
+                    <div
+                      className={`p-4 rounded-lg ${
+                        submitStatus.type === "success"
+                          ? "bg-green-50 text-green-800 border border-green-200"
+                          : "bg-red-50 text-red-800 border border-red-200"
+                      }`}
+                    >
+                      <p className="text-sm font-medium">
+                        {submitStatus.message}
+                      </p>
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <div className="pt-4">
                     <ThemeButton
@@ -211,8 +294,9 @@ const ContactFormSection = () => {
                       size="lg"
                       isArrowIcon={true}
                       fullWidth
+                      disabled={isSubmitting}
                     >
-                      Submit
+                      {isSubmitting ? "Submitting..." : "Submit"}
                     </ThemeButton>
                   </div>
                 </form>
