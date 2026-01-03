@@ -56,7 +56,7 @@ const AboutUsSection = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-[#FFFBF6] overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-24 lg:pb-0 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Section - Images and Statistics */}
@@ -135,7 +135,9 @@ const AboutUsSection = () => {
                     />
                   </motion.div>
                   <div className="flex flex-col items-center justify-center">
-                    <p className="text-sm font-bold text-[#1a1a2e] ">ISO 9001</p>
+                    <p className="text-sm font-bold text-[#1a1a2e] ">
+                      ISO 9001
+                    </p>
                     <p
                       style={{ fontSize: "10px" }}
                       className="font-bold text-[#1a1a2e] "

@@ -55,7 +55,7 @@ body {
       rgba(244, 103, 0, 0) 100%),
     url("/images/downLoadSection/downLoadBgImg.png");
 
-    
+
 
   background-size: contain;
   background-position: right center;
@@ -80,5 +80,15 @@ body {
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;
+
+}
+
+.home-service-section-bg {
+  background:
+    linear-gradient(360deg,
+      #fdf6ea 0%,
+      #fdf6ea 35%,
+      #fdf6ea 55%,
+      white 70%);
 
 }

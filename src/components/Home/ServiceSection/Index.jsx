@@ -74,7 +74,7 @@ const ServiceSection = ({ categories = [] }) => {
   const serviceBatches = services?.length / 5;
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-32 bg-bg-cream overflow-hidden">
+    <section className="relative pb-16 pt-10 sm:py-20 lg:py-32 home-service-section-bg overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <motion.div
