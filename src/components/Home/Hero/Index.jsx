@@ -148,7 +148,7 @@ const Hero = () => {
                 },
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className=" bg-white  rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 shadow-md hover:shadow-lg transition-shadow"
+              className=" bg-white  rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12  hover:shadow-lg transition-shadow"
             >
               {/* Emergency Cases Card */}
               <div className=" p-6  ">
@@ -190,7 +190,7 @@ const Hero = () => {
                   variant="primary"
                   size="sm"
                   isArrowIcon={false}
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto "
                   onClick={() =>
                     window.open(
                       process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
@@ -198,7 +198,9 @@ const Hero = () => {
                     )
                   }
                 >
-                  Timetable <span className="ml-1 text-lg font-bold">+</span>
+                  <p className="text-[16px]">
+                    Timetable <span className="ml-1 text-lg font-bold">+</span>
+                  </p>
                 </ThemeButton>
               </div>
             </motion.div>
