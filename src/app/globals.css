@@ -66,3 +66,17 @@ body {
     background: rgba(244, 103, 0, 0.95)
   }
 }
+
+.contact-form-section-gradient {
+
+  background:
+    linear-gradient(360deg,
+      #fdf6ea 0%,
+      #fdf6ea 35%,
+      #fdf6ea 55%,
+      white 70%);
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+}

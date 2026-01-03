@@ -46,7 +46,7 @@ const ContactFormSection = () => {
 
       const response = await contactUsApi(contactData);
 
-      if (checkResponse({ res: response })) {
+      if (checkResponse({ res: response, showSuccess: true })) {
         setSubmitStatus({
           type: "success",
           message:
@@ -104,7 +104,7 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section className="relative pt-16 sm:pt-20 lg:pt-24 bg-white  lg:px-20">
+    <section className="relative pt-16 sm:pt-20 lg:pt-24 bg-white  pb-8 contact-form-section-gradient lg:px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -122,14 +122,14 @@ const ContactFormSection = () => {
                   variants={itemVariants}
                   className="bg-primary h-full  rounded-3xl flex flex-col"
                 >
-                  <div className="space-y-8 p-4 lg:p-12  ">
+                  <div className="space-y-2 p-4 lg:p-12  ">
                     {/* Heading */}
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                    <h2 className="text-3xl sm:text-3xl font-bold text-white">
                       Contact Information
                     </h2>
 
                     {/* Description */}
-                    <p className="text-base sm:text-lg text-white/90 leading-relaxed">
+                    <p className="text-base sm:text-lg text-white/90 leading-6">
                       We&apos;re here to help! For questions or assistance, feel
                       free to reach out and contact us anytime.
                     </p>
@@ -167,6 +167,19 @@ const ContactFormSection = () => {
                 variants={itemVariants}
                 className="bg-white p-8 sm:p-12 lg:p-16"
               >
+                {/* {submitStatus.type && (
+                  <div
+                    className={`p-4 mb-4 rounded-lg ${
+                      submitStatus.type === "success"
+                        ? "bg-green-50 text-green-800 border border-green-200"
+                        : "bg-red-50 text-red-800 border border-red-200"
+                    }`}
+                  >
+                    <p className="text-sm font-medium">
+                      {submitStatus.message}
+                    </p>
+                  </div>
+                )} */}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Fields - Side by Side */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -272,19 +285,6 @@ const ContactFormSection = () => {
                   </div>
 
                   {/* Submit Status Message */}
-                  {submitStatus.type && (
-                    <div
-                      className={`p-4 rounded-lg ${
-                        submitStatus.type === "success"
-                          ? "bg-green-50 text-green-800 border border-green-200"
-                          : "bg-red-50 text-red-800 border border-red-200"
-                      }`}
-                    >
-                      <p className="text-sm font-medium">
-                        {submitStatus.message}
-                      </p>
-                    </div>
-                  )}
 
                   {/* Submit Button */}
                   <div className="pt-4">
