@@ -5,6 +5,7 @@ import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ContactSection from "@/components/Home/ContactSection/Index";
 import TestimonialSection from "@/components/Home/TestimonialSection/Index";
 import { getHomePageData } from "@/services/homePageService";
+import DownloadAppSection from "@/components/Home/DownloadAppSection/Index";
 
 export default async function Home() {
   // Fetch home page data server-side
@@ -16,12 +17,12 @@ export default async function Home() {
       <AboutUsSection />
       <ServiceSection categories={homePageData?.data?.categories || []} />
 
-      <SuccessCountDown  floatingToTop={true} />
+      <SuccessCountDown floatingToTop={true} />
       <ContactSection />
       <TestimonialSection
         testimonials={homePageData?.data?.testimonials || []}
       />
-      {/* <DownloadAppSection /> */}
+      <DownloadAppSection />
     </>
   );
 }

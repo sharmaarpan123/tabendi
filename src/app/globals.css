@@ -44,3 +44,25 @@ body {
 .swiper-slide {
   height: unset !important;
 }
+
+.download-app-bg {
+  background:
+    linear-gradient(90deg,
+      #F46700 0%,
+      rgba(244, 103, 0, 0.95) 35%,
+      rgba(244, 103, 0, 0.6) 55%,
+      rgba(244, 103, 0, 0.25) 70%,
+      rgba(244, 103, 0, 0) 100%),
+    url("/images/downloadSection/downloadBgImg.png");
+
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+
+  .download-app-bg {
+    background: rgba(244, 103, 0, 0.95)
+  }
+}
