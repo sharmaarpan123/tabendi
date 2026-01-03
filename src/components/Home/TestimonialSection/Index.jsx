@@ -83,7 +83,7 @@ const TestimonialSection = ({ testimonials = [] }) => {
   );
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24  overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-24 lg:pb-8  overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Section - Testimonial Cards */}
@@ -102,10 +102,7 @@ const TestimonialSection = ({ testimonials = [] }) => {
                 clickable: true,
                 bulletActiveClass: "swiper-pagination-bullet-active-custom",
               }}
-              // autoplay={{
-              //   delay: 5000,
-              //   disableOnInteraction: false,
-              // }}
+             
               breakpoints={{
                 640: {
                   slidesPerView: 2,
@@ -129,7 +126,7 @@ const TestimonialSection = ({ testimonials = [] }) => {
                     </p>
 
                     <div className="flex items-center gap-4">
-                      <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
+                      <div className="relative min-w-16 min-h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
                         <Image
                           src={testimonial.image}
                           alt={testimonial.name}
@@ -180,7 +177,7 @@ const TestimonialSection = ({ testimonials = [] }) => {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
-            className="space-y-8"
+            className=""
           >
             {/* Testimonials Label */}
             <motion.div variants={itemVariants}>

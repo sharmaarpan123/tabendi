@@ -35,14 +35,14 @@ const AboutUsHeroSection = () => {
   };
 
   return (
-    <section className="relative py-8 sm:py-12 lg:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-8 pt-0 sm:py-12 lg:pt-0 lg:pb-16">
+      <div className="container mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
-          className="relative rounded-3xl overflow-hidden h-[300px] sm:h-[400px] lg:h-[500px]"
+          className="relative rounded-3xl overflow-hidden h-[300px] sm:h-[400px] lg:h-[300px]"
         >
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">

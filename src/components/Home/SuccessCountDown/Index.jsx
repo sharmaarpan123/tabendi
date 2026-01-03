@@ -126,7 +126,7 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
                 className="space-y-6 col-span-1 px-10  md:px-0 flex flex-col justify-center  md:justify-start"
               >
                 {/* Profile Images */}
-                <div className="flex items-center -space-x-3 mb-4">
+                <div className="flex items-center  -space-x-3 mb-4">
                   {profileImages.map((img, index) => (
                     <motion.div
                       key={index}
@@ -152,7 +152,11 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
                 </div>
 
                 {/* Appointment Text */}
-                <p className="text-white text-lg sm:text-xl font-medium">
+                <p className="text-white  text-lg lg:pr-32   sm:text-xl font-medium" style={{
+               
+                
+               
+                }}>
                   500+ Appointment Booking Confirm for this Week
                 </p>
               </motion.div>

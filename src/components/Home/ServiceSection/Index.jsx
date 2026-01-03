@@ -147,7 +147,7 @@ const ServiceSection = ({ categories = [] }) => {
             transition={{ duration: 0.6 }}
             className="text-center relative block margin-bottom-10"
           >
-            <hr height="1px" className="border-border-light mt-28" />
+            <hr height="1px" className="border-border-light mt-18 mb-8" />
             <ThemeButton
               variant="outline"
               size="lg"

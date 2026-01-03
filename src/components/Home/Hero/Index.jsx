@@ -169,7 +169,7 @@ const Hero = () => {
                     </div>
                     <a
                       href="tel:+917700043200"
-                      className="text-2xl font-bold text-primary hover:underline"
+                      className="text-sm font-bold text-primary hover:underline"
                     >
                       630 884 5115
                     </a>

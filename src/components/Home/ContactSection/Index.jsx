@@ -57,7 +57,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="relative pb-16 pt-0 sm:pb -20 lg:pb-24 overflow-hidden">
+    <section className="relative pb-16 pt-0 sm:pb-20 lg:pb-0 overflow-hidden">
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
         <div className="absolute inset-0 h-full">
           <div className="relative h-full rounded-3xl overflow-hidden">

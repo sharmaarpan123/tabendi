@@ -48,7 +48,7 @@ const DownloadAppSection = () => {
   };
 
   return (
-    <section className="relative py-16    overflow-hidden">
+    <section className="relative pb-4 lg:pb-10   overflow-hidden">
       <div className="container mx-auto download-app-bg  px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -96,7 +96,7 @@ const DownloadAppSection = () => {
                 {/* Google Play Button */}
                 <Link
                   href={downloadAppStoreLinks.playStoreUrl}
-                  className=" relative w-44 h-14 inline-flex items-center justify-center bg-black text-white  rounded-lg hover:bg-gray-900 transition-colors duration-300"
+                  className="relative  border-white border-3 w-44 h-14 inline-flex items-center justify-center bg-black text-white  rounded-lg hover:bg-gray-900 transition-colors duration-300"
                 >
                   <Image
                     src="/images/Google_play_store.png"
@@ -107,7 +107,7 @@ const DownloadAppSection = () => {
                 {/* App Store Button */}
                 <Link
                   href={downloadAppStoreLinks.appStoreUrl}
-                  className=" relative w-44 h-14 inline-flex items-center justify-center bg-black text-white  rounded-lg hover:bg-gray-900 transition-colors duration-300"
+                  className=" relative w-44 h-14 border-white border-3  inline-flex items-center justify-center bg-black text-white  rounded-lg hover:bg-gray-900 transition-colors duration-300"
                 >
                   <Image
                     src="/images/app_store_icon.png"

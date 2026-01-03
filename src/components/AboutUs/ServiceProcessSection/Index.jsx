@@ -95,7 +95,7 @@ const ServiceProcessSection = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-24 lg:pb-0 bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -228,7 +228,7 @@ const ServiceProcessSection = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-text-dark leading-relaxed">
+                  <p className="text-sm text-text-dark leading-relaxed overflow-visible">
                     {steps[1].description}
                   </p>
                 </div>
@@ -300,10 +300,6 @@ const ServiceProcessSection = () => {
                     <DocumentIcon />
                   </div>
                 </div>
-
-                
-
-                
 
                 {/* Step Content */}
                 <div className="text-center space-y-3 max-w-xs">

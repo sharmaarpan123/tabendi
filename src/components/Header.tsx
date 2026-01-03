@@ -29,8 +29,8 @@ const contactInfo = [
     icon: LocationIcon,
     text: "715 W Lake Street, Suite 201, Addison, IL, 60101",
   },
-  { icon: PhoneIcon, text: "630 884 5115" },
   { icon: EmailIcon, text: "support@tabendihealthcarenetwork.com" },
+  { icon: PhoneIcon, text: "630 884 5115" },
 ];
 
 const socialIcons = [
@@ -155,26 +155,14 @@ export default function Header() {
             >
               <Link
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative ${
+                className={`text-sm font-medium relative ${
                   pathname === link.href
-                    ? "text-[]"
+                    ? "text-[] text-primary"
                     : "text-text-dark hover:text-primary"
                 }`}
               >
                 <motion.span whileHover={{ y: -2 }} className="block relative">
                   {link.label}
-                  {pathname === link.href && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      initial={false}
-                      transition={{
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 30,
-                      }}
-                    />
-                  )}
                 </motion.span>
               </Link>
             </motion.div>

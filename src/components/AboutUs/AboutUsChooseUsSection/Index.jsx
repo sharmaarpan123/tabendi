@@ -29,8 +29,8 @@ const AboutUsChooseUsSection = () => {
       title: "Pioneering Healthcare Solutions",
       description:
         "We boast skilled and compassionate healthcare professionals dedicated to providing the highest standard of care.",
-        iconColor: "var(--bg-cream)",
-        iconCheckColor: "var(--primary)",
+      iconColor: "var(--bg-cream)",
+      iconCheckColor: "var(--primary)",
     },
   ];
 
@@ -73,7 +73,7 @@ const AboutUsChooseUsSection = () => {
   };
 
   return (
-    <section className="relative py-16  sm:py-20 lg:py-24  bg-white overflow-hidden">
+    <section className="relative py-16  sm:py-20 lg:py-24 lg:pb-0  bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Appointment CTA Card */}
@@ -127,7 +127,7 @@ const AboutUsChooseUsSection = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={viewportOptions}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a1a2e] leading-tight"
+                  className="text-2xl md:text-3xl  font-bold text-[#1a1a2e] leading-tight"
                 >
                   Your Path to Mental Health, Make an Appointment Now.
                 </motion.h2>
@@ -163,7 +163,7 @@ const AboutUsChooseUsSection = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportOptions}
-                className="relative z-10 mt-8 h-[400px] lg:h-[450px] flex items-end justify-end"
+                className="relative z-10 mt-8 h-[200px] lg:h-[250px] flex items-end justify-end"
               >
                 <div className="relative w-full h-full">
                   <Image
@@ -183,7 +183,7 @@ const AboutUsChooseUsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
-            className="space-y-8 lg:col-span-2"
+            className="space-y-2 lg:col-span-2"
           >
             {/* Sub-heading */}
             <motion.div variants={itemVariants}>
@@ -204,7 +204,7 @@ const AboutUsChooseUsSection = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-base text-text-dark leading-relaxed"
+              className="text-base pb-8 text-text-dark leading-relaxed"
             >
               Dr. Chool Liyanapatabendi, M.D., is a board-certified physician in
               Internal Medicine, specializing in the prevention, diagnosis, and

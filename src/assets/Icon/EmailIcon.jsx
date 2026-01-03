@@ -5,17 +5,28 @@ const EmailIcon = ({ width = 16, height = 16, color = "var(--primary)" }) => {
     <svg
       width={width}
       height={height}
-      viewBox="0 0 16 16"
+      viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.555-4.274-2.57L2 12.105V5.383l4.692 2.816L15 5.383v6.555Z"
-        fill={color}
+        d="M14.167 17.0833H5.83366C3.33366 17.0833 1.66699 15.8333 1.66699 12.9166V7.08329C1.66699 4.16663 3.33366 2.91663 5.83366 2.91663H14.167C16.667 2.91663 18.3337 4.16663 18.3337 7.08329V12.9166C18.3337 15.8333 16.667 17.0833 14.167 17.0833Z"
+        stroke={color}
+        strokeWidth="1.25"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.1663 7.5L11.558 9.58333C10.6997 10.2667 9.29134 10.2667 8.433 9.58333L5.83301 7.5"
+        stroke={color}
+        strokeWidth="1.25"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
 };
 
 export default EmailIcon;
-
