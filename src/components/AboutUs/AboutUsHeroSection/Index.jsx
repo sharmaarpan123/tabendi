@@ -95,10 +95,10 @@ const AboutUsHeroSection = () => {
 
             <motion.div
               variants={itemVariants}
-              className="relative flex justify-end   "
+              className="relative flex justify-center   "
             >
               <motion.div
-                className="absolute left-[20px] -top-[50px]"
+                className="absolute -top-[20px]"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 20,
@@ -119,7 +119,7 @@ const AboutUsHeroSection = () => {
               <div className="relative  w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px]">
                 {/* Doctor Image */}
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[450px] lg:h-[450px] overflow-hidden ">
+                  <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[400px] lg:h-[400px] overflow-hidden ">
                     <Image
                       src="/images/AboutUsHero/HeroDoctor.png"
                       alt="Dr. Chool Liyanapatabendi"
@@ -132,7 +132,7 @@ const AboutUsHeroSection = () => {
             </motion.div>
 
             {/* Right Column - Text Content */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div variants={itemVariants} className="space-y-2">
               {/* Section Label */}
               <motion.p
                 variants={itemVariants}
@@ -177,12 +177,8 @@ const AboutUsHeroSection = () => {
                 className="border border-border-light rounded-2xl p-6 bg-white"
               >
                 <div className="flex items-start gap-4">
-                  <div className="shrink-0 mt-1">
-                    <LocationIcon
-                      width={24}
-                      height={24}
-                      color="var(--primary)"
-                    />
+                  <div className=" rounded-full bg-[#FFDCC2] p-2  mt-1">
+                    <LocationIcon width={24} height={24} color="black" />
                   </div>
                   <div className="space-y-1">
                     <p className="font-bold text-text-dark">
