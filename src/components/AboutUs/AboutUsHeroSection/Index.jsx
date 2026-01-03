@@ -132,7 +132,7 @@ const AboutUsHeroSection = () => {
             </motion.div>
 
             {/* Right Column - Text Content */}
-            <motion.div variants={itemVariants} className="space-y-2">
+            <motion.div variants={itemVariants} className="space-y-2 px-4">
               {/* Section Label */}
               <motion.p
                 variants={itemVariants}
