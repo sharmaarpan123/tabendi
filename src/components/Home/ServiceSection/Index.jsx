@@ -181,6 +181,7 @@ const ServiceOneRow = ({ services, startIndex, item }) => {
             viewport={viewportOptions}
             transition={{ duration: 0.6 + index * 0.1 }}
             onHoverStart={() => setExpandedIndex(index)}
+            onClick={() => setExpandedIndex(index)}
             className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
               isExpanded ? "lg:col-span-3 bg-white" : "lg:col-span-1 bg-white"
             }`}

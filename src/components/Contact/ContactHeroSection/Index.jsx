@@ -34,7 +34,7 @@ const ContactHeroSection = () => {
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, x: 50 },
+    hidden: { opacity: 0, scale: 0.8,  },
     visible: {
       opacity: 1,
       scale: 1,
@@ -72,7 +72,7 @@ const ContactHeroSection = () => {
         viewport={viewportOptions}
         className="relative h-full pt-16 overflow-hidden  flex items-center justify-center"
       >
-        <div className="lg:absolute static lg:bottom-0">
+        <div className="lg:absolute  lg:bottom-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1.5 }}

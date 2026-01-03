@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import EmailIcon from "@/assets/Icon/EmailIcon";
+import { externalLinks } from "@/config/config";
 
 const Footer = () => {
   const services = [
@@ -17,16 +18,25 @@ const Footer = () => {
 
   const quickLinks = [
     { href: "/about", label: "About us" },
-    { href: "#", label: "Our Doctor" },
-    { href: "#", label: "Appointments" },
+    // { href: "#", label: "Our Doctor" },
+    // { href: "#", label: "Appointments" },
     { href: "/contact", label: "Contact us" },
     { href: "#", label: "FAQs" },
   ];
 
   const legalLinks = [
-    { href: "#", label: "Terms & Condition" },
-    { href: "#", label: "Privacy Policy" },
-    { href: "#", label: "Disclaimer" },
+    {
+      href: `${externalLinks.cmsLink}/terms`,
+      label: "Terms & Condition",
+    },
+    {
+      href: `${externalLinks.cmsLink}/privacy`,
+      label: "Privacy Policy",
+    },
+    {
+      href: `${externalLinks.cmsLink}/patient_agreement`,
+      label: "User Terms of Agreement",
+    },
   ];
 
   const containerVariants = {
