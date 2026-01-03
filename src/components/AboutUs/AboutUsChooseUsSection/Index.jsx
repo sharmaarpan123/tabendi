@@ -13,21 +13,24 @@ const AboutUsChooseUsSection = () => {
       title: "Patient-Provider Approach",
       description:
         "Your health is at the heart of what we do. We prioritize your comfort, needs, and satisfaction in every aspect of healthcare delivery.",
-      iconColor: "var(--primary)",
+      iconColor: "var(--bg-cream)",
+      iconCheckColor: "var(--primary)",
     },
     {
       id: 2,
       title: "Expert Healthcare Professionals",
       description:
         "We boast skilled and compassionate healthcare professionals dedicated to providing the highest standard of care.",
-      iconColor: "#10B981", // Green color
+      iconColor: "#D2EEE2", // Green color
+      iconCheckColor: "#1C4B37",
     },
     {
       id: 3,
       title: "Pioneering Healthcare Solutions",
       description:
         "We boast skilled and compassionate healthcare professionals dedicated to providing the highest standard of care.",
-      iconColor: "var(--primary)",
+        iconColor: "var(--bg-cream)",
+        iconCheckColor: "var(--primary)",
     },
   ];
 
@@ -70,7 +73,7 @@ const AboutUsChooseUsSection = () => {
   };
 
   return (
-    <section  className="relative py-16 pt-0 sm:py-20 lg:py-24 lg:pt-0 bg-white overflow-hidden">
+    <section className="relative py-16  sm:py-20 lg:py-24  bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Appointment CTA Card */}
@@ -81,9 +84,9 @@ const AboutUsChooseUsSection = () => {
             viewport={viewportOptions}
             className="relative lg:col-span-1"
           >
-            <div className="relative bg-bg-cream rounded-3xl p-8 pb-0  sm:p-10 lg:p-12 lg:pb-0  flex flex-col justify-between overflow-hidden">
+            <div className="relative bg-[#FFD3B2] rounded-3xl p-8 pb-0  sm:p-10 lg:p-12 lg:pb-0  flex flex-col justify-between overflow-hidden">
               {/* Faint THN Logo in Background */}
-              <div className="absolute top-1/2 left-4 opacity-50">
+              <div className="absolute top-1/2 left-4 ">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -91,7 +94,7 @@ const AboutUsChooseUsSection = () => {
                   className="flex items-center justify-center rounded-full"
                 >
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo-light-watermark.png"
                     alt="Tabendi Healthcare Network Logo"
                     width={200}
                     height={60}
@@ -115,7 +118,6 @@ const AboutUsChooseUsSection = () => {
                   />
                 </motion.div>
               </div>
-              
 
               {/* Content */}
               <div className="relative z-10 space-y-6">
@@ -138,7 +140,18 @@ const AboutUsChooseUsSection = () => {
                   viewport={viewportOptions}
                   className="pt-4"
                 >
-                  <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
+                  <ThemeButton
+                    variant="transparent"
+                    size="lg"
+                    className="text-primary"
+                    isArrowIcon={true}
+                    onClick={() => {
+                      window.open(
+                        process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
+                        "_blank"
+                      );
+                    }}
+                  >
                     Make Appointment
                   </ThemeButton>
                 </motion.div>
@@ -221,7 +234,11 @@ const AboutUsChooseUsSection = () => {
                       className="w-12 h-12 rounded-full flex items-center justify-center"
                       style={{ backgroundColor: feature.iconColor }}
                     >
-                      <CheckIcon width={24} height={24} color="white" />
+                      <CheckIcon
+                        width={24}
+                        height={24}
+                        color={feature.iconCheckColor}
+                      />
                     </div>
                   </div>
 

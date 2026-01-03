@@ -136,7 +136,7 @@ const AboutUsHeroSection = () => {
               {/* Section Label */}
               <motion.p
                 variants={itemVariants}
-                className="text-sm font-semibold text-primary uppercase tracking-wide"
+                className=" font-semibold text-primary text-2xl tracking-wide"
               >
                 About Us
               </motion.p>
@@ -184,7 +184,7 @@ const AboutUsHeroSection = () => {
                       color="var(--primary)"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <p className="font-bold text-text-dark">
                       Practice Location:
                     </p>

@@ -57,7 +57,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section className="relative pb-16 pt-0 sm:pb -20 lg:pb-24 overflow-hidden">
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
         <div className="absolute inset-0 h-full">
           <div className="relative h-full rounded-3xl overflow-hidden">
@@ -81,7 +81,7 @@ const ContactSection = () => {
             <div style={{background:"rgba(255, 255, 255, 0.6)" , }} className=" rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl">
               {/* Top Label */}
               <motion.div variants={itemVariants}>
-                <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+                <span className="text-2xl font-semibold text-primary  tracking-wide">
                   Are you doctor? Join us!
                 </span>
               </motion.div>

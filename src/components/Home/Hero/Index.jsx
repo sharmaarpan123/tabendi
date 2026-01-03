@@ -52,11 +52,12 @@ const Hero = () => {
           transition={{
             ease: "linear",
           }}
+          className="h-full lg:h-auto bg-bg-cream"
         >
           <video
             src="/TBHN.mp4"
             alt="Background pattern"
-            className="object-contain h-full w-full"
+            className="object-cover  h-full w-full"
             autoPlay
             muted
             loop
@@ -134,6 +135,7 @@ const Hero = () => {
 
             {/* Information Cards */}
             <motion.div
+              whileHover={{ scale: 1.02 }}
               variants={{
                 hidden: { opacity: 0, y: 100 },
                 visible: {
@@ -145,14 +147,11 @@ const Hero = () => {
                   },
                 },
               }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12"
+              transition={{ type: "spring", stiffness: 300 }}
+              className=" bg-white  rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 shadow-md hover:shadow-lg transition-shadow"
             >
               {/* Emergency Cases Card */}
-              <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-              >
+              <div className=" p-6  ">
                 <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                   Emergency Cases
                 </h3>
@@ -160,26 +159,26 @@ const Hero = () => {
                   Personalized attention, and continuous support for every
                   patient.
                 </p>
-                <div className="flex items-center gap-2 mb-2">
-                  <PhoneIcon color="#8B4513" />
-                  <span className="text-sm text-[#8B4513] font-medium">
-                    24/7 Online
-                  </span>
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#8B4513] p-2 rounded-full">
+                    <PhoneIcon color="white" width={24} height={24} />
+                  </div>
+                  <div>
+                    <div className="flex items-center">
+                      <span className="text-sm  font-medium">24/7 Online</span>
+                    </div>
+                    <a
+                      href="tel:+917700043200"
+                      className="text-2xl font-bold text-primary hover:underline"
+                    >
+                      630 884 5115
+                    </a>
+                  </div>
                 </div>
-                <a
-                  href="tel:+917700043200"
-                  className="text-2xl font-bold text-primary hover:underline"
-                >
-                  630 884 5115
-                </a>
-              </motion.div>
+              </div>
 
               {/* Doctor Timetable Card */}
-              <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-              >
+              <div className=" p-6 ">
                 <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                   Doctor Timetable
                 </h3>
@@ -201,7 +200,7 @@ const Hero = () => {
                 >
                   Timetable <span className="ml-1 text-lg font-bold">+</span>
                 </ThemeButton>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>

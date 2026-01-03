@@ -120,20 +120,30 @@ const AboutUsSection = () => {
             </div>
             <div>
               <div className="flex  gap-2">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={viewportOptions}
-                  transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
-                >
-                  <Image
-                    src="/images/HomeAboutUs/certificationImage.png"
-                    alt="ISO 9001 Quality Management Certification"
-                    width={80}
-                    height={80}
-                    className="object-contain"
-                  />
-                </motion.div>
+                <div className="flex flex-col justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={viewportOptions}
+                    transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/images/HomeAboutUs/certificationImage.png"
+                      alt="ISO 9001 Quality Management Certification"
+                      className="w-14 h-14 object-contain"
+                    />
+                  </motion.div>
+                  <div className="flex flex-col items-center justify-center">
+                    <p className="text-sm font-bold text-[#1a1a2e] ">ISO 9001</p>
+                    <p
+                      style={{ fontSize: "10px" }}
+                      className="font-bold text-[#1a1a2e] "
+                    >
+                      ACCREDITATION
+                    </p>
+                  </div>
+                </div>
                 <div>
                   <p className="text-sm text-primary">ISO 9001</p>
                   <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">

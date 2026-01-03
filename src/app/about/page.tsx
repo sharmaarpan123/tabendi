@@ -13,7 +13,8 @@ const AboutUsPage = async () => {
     <>
       <AboutUsHeroSection />
       <AboutUsServiceSection />
-      <SuccessCountDown floatingToTop={true} />
+      <SuccessCountDown
+       />
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
       <TestimonialSection testimonials={testimonialsData?.data?.data || []} />

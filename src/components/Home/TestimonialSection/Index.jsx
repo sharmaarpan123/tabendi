@@ -1,6 +1,5 @@
 "use client";
 
-import ThemeButton from "@/components/ui/ThemeButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -185,7 +184,7 @@ const TestimonialSection = ({ testimonials = [] }) => {
           >
             {/* Testimonials Label */}
             <motion.div variants={itemVariants}>
-              <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+              <span className="text-2xl font-semibold text-primary  tracking-wide">
                 Testimonials
               </span>
             </motion.div>

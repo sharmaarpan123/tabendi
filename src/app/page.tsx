@@ -15,7 +15,8 @@ export default async function Home() {
       <Hero />
       <AboutUsSection />
       <ServiceSection categories={homePageData?.data?.categories || []} />
-      <SuccessCountDown />
+
+      <SuccessCountDown  floatingToTop={true} />
       <ContactSection />
       <TestimonialSection
         testimonials={homePageData?.data?.testimonials || []}

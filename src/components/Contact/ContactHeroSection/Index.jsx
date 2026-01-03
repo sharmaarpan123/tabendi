@@ -48,8 +48,7 @@ const ContactHeroSection = () => {
 
   return (
     <section
-      // style={{ background: "red" }}
-      className="bg-bg-cream  min-h-[80vh] container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+      className="bg-bg-cream  min-h-[350px] container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
     >
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
@@ -62,21 +61,14 @@ const ContactHeroSection = () => {
           variants={itemVariants}
           className="flex items-center gap-2 text-sm sm:text-base text-text-dark"
         >
-          <Link
-            href="/"
-            className="hover:text-primary transition-colors duration-200"
-          >
-            Home
-          </Link>
-          <span className="text-text-dark">/</span>
-          <span className="text-text-dark">Contact Us</span>
+          {/* <span className="text-text-dark">Contact Us</span> */}
         </motion.div>
       </div>
 
       <motion.div
         variants={imageVariants}
         initial="hidden"
-        whileInView="visible"
+        whileInView={{ opacity: 0.7,  }}
         viewport={viewportOptions}
         className="relative h-full pt-16 overflow-hidden  flex items-center justify-center"
       >
@@ -89,7 +81,7 @@ const ContactHeroSection = () => {
             className="absolute  lg:w-full h-full flex items-center justify-center"
           >
             <motion.div
-              className="relative w-96 h-96"
+              className="relative w-[300px] h-[300px]"
               animate={{ rotate: 360 }}
               transition={{
                 duration: 20,
@@ -102,7 +94,7 @@ const ContactHeroSection = () => {
                 alt="Background pattern"
                 width={400}
                 height={400}
-                className="object-contain"
+                className="object-contain w-[300px] h-[300px]"
               />
             </motion.div>
           </motion.div>
@@ -118,9 +110,9 @@ const ContactHeroSection = () => {
             <Image
               src="/images/Hero/HeroGirl.png"
               alt="Healthcare Professional"
-              width={600}
-              height={800}
-              className="object-contain max-h-[600px] w-auto"
+              width={400}
+              height={400}
+              className="object-contain max-h-[300px] w-auto"
               priority
             />
           </motion.div>

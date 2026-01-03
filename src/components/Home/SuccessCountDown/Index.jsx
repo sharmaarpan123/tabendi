@@ -76,7 +76,7 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
     hidden: { opacity: 0, translateY: floatingToTop ? 0 : 0 },
     visible: {
       opacity: 1,
-      translateY: floatingToTop ? -100 : 0,
+      translateY: floatingToTop ? -70 : 0,
       transition: {
         staggerChildren: 0.2,
         delayChildren: 0.1,
@@ -97,7 +97,7 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
   };
 
   return (
-    <section className="relative py-16  ">
+    <section className="relative  ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -119,11 +119,11 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
 
           {/* Content */}
           <div className="relative z-10 p-8 sm:p-12 lg:p-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
               {/* Left Section - Appointment Booking */}
               <motion.div
                 variants={itemVariants}
-                className="space-y-6 flex flex-col justify-center  md:justify-start"
+                className="space-y-6 col-span-1 px-10  md:px-0 flex flex-col justify-center  md:justify-start"
               >
                 {/* Profile Images */}
                 <div className="flex items-center -space-x-3 mb-4">
@@ -160,7 +160,7 @@ const SuccessCountDown = ({ floatingToTop = false }) => {
               {/* Right Section - Statistics */}
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col md:flex-row gap-8"
+                className="flex px-10 md:px-0 col-span-2 justify-between flex-col md:flex-row gap-8"
               >
                 {statistics.map((stat, index) => (
                   <Counter

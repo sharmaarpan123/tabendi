@@ -104,12 +104,12 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-white  lg:px-20">
+    <section className="relative pt-16 sm:pt-20 lg:pt-24 bg-white  lg:px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: -100 }}
+          whileInView={{ opacity: 1, y: -40 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={viewportOptions}
           className="relative -mt-20 lg:-mt-32 z-20"
@@ -120,9 +120,9 @@ const ContactFormSection = () => {
               <div className="p-4 sm:p-6 ">
                 <motion.div
                   variants={itemVariants}
-                  className="bg-primary h-full  rounded-3xl flex flex-col justify-center"
+                  className="bg-primary h-full  rounded-3xl flex flex-col"
                 >
-                  <div className="space-y-8 p-4  ">
+                  <div className="space-y-8 p-4 lg:p-12  ">
                     {/* Heading */}
                     <h2 className="text-3xl sm:text-4xl font-bold text-white">
                       Contact Information
@@ -141,7 +141,7 @@ const ContactFormSection = () => {
                       </div>
                       <a
                         href="mailto:support@tabendihealthcarenetwork.com"
-                        className="text-base sm:text-lg text-white hover:text-white/80 transition-colors duration-200"
+                        className="text-base sm:text-lg text-white hover:text-white/80 transition-colors duration-200 break-all"
                       >
                         support@tabendihealthcarenetwork.com
                       </a>

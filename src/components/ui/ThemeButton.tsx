@@ -39,16 +39,17 @@ export default function ThemeButton({
   children,
   ...props
 }: ThemeButtonProps) {
-  console.log(isArrowIcon , variant , "debug");
+  console.log(isArrowIcon, variant, "debug");
   const baseStyles =
-    "flex items-center justify-center gap-2 font-medium transition-colors rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
+    "flex items-center cursor-pointer justify-center gap-2 font-medium transition-colors rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantStyles = {
     primary: "bg-primary text-white hover:bg-[#E05A00] active:bg-[#D04D00]",
     secondary:
       "bg-white text-primary border border-primary hover:bg-[#FFFBF6] active:bg-[#FFF5E6]",
     outline:
-      "bg-transparent text-text-dark border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-primary hover:text-primary active:bg-[#FFF5E6]",
+      " text-text-dark border border-[#E0E0E0] hover:bg-[#FFFBF6] hover:border-primary hover:text-primary active:bg-[#FFF5E6]",
+    transparent: "bg-transparent  border-none ",
   };
 
   const sizeStyles = {
@@ -67,7 +68,6 @@ export default function ThemeButton({
   ) : isArrowIcon ? (
     <ArrowIcon color={variant === "primary" ? "white" : "var(--primary)"} />
   ) : null;
-
 
   const iconElement = defaultIcon ? (
     <motion.span
