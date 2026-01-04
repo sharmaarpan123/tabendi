@@ -50,7 +50,7 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="w-full sticky top-0 z-50 shadow-sm "
+      className="w-full sticky top-0 z-50  "
     >
       {/* Top Bar - Contact Info & Social Media */}
       <motion.div
@@ -112,140 +112,143 @@ export default function Header() {
           </div>
         </div>
       </motion.div>
-
-      {/* Bottom Bar - Logo, Navigation, CTA Buttons */}
+      {/* Bottom Bar - Logo, Navigation, CTA Buttons */}{" "}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="bg-white container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        className="bg-white"
       >
-        {/* Logo - Left */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <Link href="/" className="flex items-center gap-3">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          {/* Logo - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Link href="/" className="flex items-center gap-3">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                className="flex items-center justify-center rounded-full"
+              >
+                <Image
+                  src="/images/logo.png"
+                  alt="Tabendi Healthcare Network Logo"
+                  width={90}
+                  height={40}
+                  className="object-contain"
+                />
+              </motion.div>
+            </Link>
+          </motion.div>
+
+          {/* Navigation Links - Center */}
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link, index) => (
+              <motion.div
+                key={link.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              >
+                <Link
+                  href={link.href}
+                  className={`text-sm font-medium relative ${
+                    pathname === link.href
+                      ? "text-[] text-primary"
+                      : "text-text-dark hover:text-primary"
+                  }`}
+                >
+                  <motion.span
+                    whileHover={{ y: -2 }}
+                    className="block relative"
+                  >
+                    {link.label}
+                  </motion.span>
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
+
+          {/* CTA Buttons - Right */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="hidden items-center gap-2 lg:flex"
+          >
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
-              className="flex items-center justify-center rounded-full"
             >
-              <Image
-                src="/images/logo.png"
-                alt="Tabendi Healthcare Network Logo"
-                width={90}
-                height={40}
-                className="object-contain"
-              />
+              <ThemeButton
+                variant="primary"
+                size="sm"
+                className="sm:px-4 sm:py-2.5 sm:text-sm"
+                isArrowIcon={true}
+                onClick={() =>
+                  window.open(process.env.NEXT_PUBLIC_PATIENT_WEB_URL, "_blank")
+                }
+              >
+                Make Appointment
+              </ThemeButton>
             </motion.div>
-          </Link>
-        </motion.div>
-
-        {/* Navigation Links - Center */}
-        <nav className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link, index) => (
             <motion.div
-              key={link.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
-              <Link
-                href={link.href}
-                className={`text-sm font-medium relative ${
-                  pathname === link.href
-                    ? "text-[] text-primary"
-                    : "text-text-dark hover:text-primary"
-                }`}
+              <ThemeButton
+                variant="secondary"
+                size="sm"
+                className="sm:px-4 sm:py-2.5 sm:text-sm"
+                isArrowIcon={true}
+                onClick={() =>
+                  window.open(process.env.NEXT_PUBLIC_DOCTOR_WEB_URL, "_blank")
+                }
               >
-                <motion.span whileHover={{ y: -2 }} className="block relative">
-                  {link.label}
-                </motion.span>
-              </Link>
+                Join as Doctor
+              </ThemeButton>
             </motion.div>
-          ))}
-        </nav>
-
-        {/* CTA Buttons - Right */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="hidden items-center gap-2 lg:flex"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
-            <ThemeButton
-              variant="primary"
-              size="sm"
-              className="sm:px-4 sm:py-2.5 sm:text-sm"
-              isArrowIcon={true}
-              onClick={() =>
-                window.open(process.env.NEXT_PUBLIC_PATIENT_WEB_URL, "_blank")
-              }
-            >
-              Make Appointment
-            </ThemeButton>
           </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
-            <ThemeButton
-              variant="secondary"
-              size="sm"
-              className="sm:px-4 sm:py-2.5 sm:text-sm"
-              isArrowIcon={true}
-              onClick={() =>
-                window.open(process.env.NEXT_PUBLIC_DOCTOR_WEB_URL, "_blank")
-              }
-            >
-              Join as Doctor
-            </ThemeButton>
-          </motion.div>
-        </motion.div>
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="flex items-center justify-center rounded-lg p-2 text-text-dark transition-colors hover:bg-[#FFFBF6] lg:hidden"
-          aria-label="Toggle menu"
-        >
-          <AnimatePresence mode="wait">
-            {mobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <CloseIcon />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <MenuIcon />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+          {/* Mobile Menu Button */}
+          <motion.button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center justify-center rounded-lg p-2 text-text-dark transition-colors hover:bg-[#FFFBF6] lg:hidden"
+            aria-label="Toggle menu"
+          >
+            <AnimatePresence mode="wait">
+              {mobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <CloseIcon />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <MenuIcon />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
       </motion.div>
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (

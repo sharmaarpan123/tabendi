@@ -45,7 +45,7 @@ const Hero = () => {
   return (
     <section className="mx-auto  container  relative   rounded-3xl ">
       {/* Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none ">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none  rounded-3xl ">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}

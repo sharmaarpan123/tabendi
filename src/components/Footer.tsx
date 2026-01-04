@@ -70,7 +70,7 @@ const Footer = () => {
       className="w-full"
     >
       {/* Upper Section - Light Gray Background */}
-      <div className="bg-white pb-12  sm:pb-16 lg:pb-20">
+      <div className="bg-white pb-12 pt-8 sm:pb-16 lg:pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Column 1 - Branding and Description */}
@@ -179,7 +179,7 @@ const Footer = () => {
 
             {/* Right Side - Copyright */}
             <div className="text-sm text-white text-center sm:text-right">
-              © 2025 Tabandi, Inc. All rights reserved
+              © {new Date().getFullYear()} Tabandi, Inc. All rights reserved
             </div>
           </div>
         </div>
