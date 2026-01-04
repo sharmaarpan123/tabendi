@@ -4,6 +4,7 @@ import AboutUsServiceSection from "@/components/AboutUs/AboutUsServiceSection/In
 import AboutUsChooseUsSection from "@/components/AboutUs/AboutUsChooseUsSection/Index";
 import SuccessCountDown from "@/components/Home/SuccessCountDown/Index";
 import ServiceProcessSection from "@/components/AboutUs/ServiceProcessSection/Index";
+import AboutUsSpecialistSection from "@/components/AboutUs/AboutUsSpecialistSection/Index";
 import TestimonialSection from "@/components/Home/TestimonialSection/Index";
 import {
   getHomePageData,
@@ -23,6 +24,7 @@ const AboutUsPage = async () => {
       <SuccessCountDown />
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
+      <AboutUsSpecialistSection />
       <TestimonialSection testimonials={testimonialsData?.data?.data || []} />
       <DownloadAppSection />
     </>
