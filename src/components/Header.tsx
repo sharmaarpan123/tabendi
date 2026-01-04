@@ -50,7 +50,7 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="w-full sticky top-0 z-50  "
+      className="w-full bg-white sticky top-0 z-50  "
     >
       {/* Top Bar - Contact Info & Social Media */}
       <motion.div
@@ -117,9 +117,9 @@ export default function Header() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="bg-white "
+        className="bg-white header-bottom-bg"
       >
-        <div className="header-bottom-bg   container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="   container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           {/* Logo - Left */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

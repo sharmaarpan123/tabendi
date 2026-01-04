@@ -17,7 +17,6 @@ export default async function Home() {
       <Hero />
       <AboutUsSection />
       <ServiceSection categories={homePageData?.data?.categories || []} />
-
       <SuccessCountDown floatingToTop={true} />
       <AboutUsSpecialistSection />
       <ContactSection />
