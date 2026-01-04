@@ -3,11 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import EmailIcon from "@/assets/Icon/EmailIcon";
 import { externalLinks } from "@/config/config";
 
 const Footer = () => {
+  const pathname = usePathname();
   const services = [
     { href: "#", label: "Primary Care Consultation" },
     { href: "#", label: "Mental Health" },
@@ -94,8 +96,27 @@ const Footer = () => {
               </Link>
               {/* Description */}
               <p className="text-sm text-text-dark leading-relaxed">
-                Our paper is sourced from FSC-certified mills. We plant enough
-                trees to more than double our paper usage.
+                Get expert medical advice from certified doctors across various
+                specialties. Whether it&apos;s a routine check-up or a second
+                opinion on a complex condition, we&apos;re here to guide you
+                every step of the way{" "}
+                {pathname === "/about" ? (
+                  <button
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                    className="text-primary hover:text-primary/80 transition-colors duration-200"
+                  >
+                    Learn more
+                  </button>
+                ) : (
+                  <Link
+                    href="/about"
+                    className="text-primary hover:text-primary/80 transition-colors duration-200"
+                  >
+                    Learn more
+                  </Link>
+                )}
               </p>
             </motion.div>
 

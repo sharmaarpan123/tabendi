@@ -102,7 +102,17 @@ const Hero = () => {
               variants={itemVariants}
               className="flex items-center gap-4 flex-wrap md:mt-4"
             >
-              <ThemeButton variant="primary" size="lg" isArrowIcon={true}>
+              <ThemeButton
+                onClick={() =>
+                  window.open(
+                    `${process.env.NEXT_PUBLIC_PATIENT_WEB_URL}`,
+                    "_blank"
+                  )
+                }
+                variant="primary"
+                size="lg"
+                isArrowIcon={true}
+              >
                 Find a Doctor
               </ThemeButton>
 

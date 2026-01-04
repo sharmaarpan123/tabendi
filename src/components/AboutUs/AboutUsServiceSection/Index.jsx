@@ -1,55 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ThemeButton from "@/components/ui/ThemeButton";
 
-const AboutUsServiceSection = () => {
-  const services = [
-    {
-      id: 1,
-      title: "General Health Check-Up",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceMind.png",
-    },
-    {
-      id: 2,
-      title: "Cardiology Consultation",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceLungs.png",
-    },
-    {
-      id: 3,
-      title: "Cardiology Consultation",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceLungs.png",
-    },
-    {
-      id: 4,
-      title: "Cardiology Consultation",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceLungs.png",
-    },
-    {
-      id: 5,
-      title: "Cardiology Consultation",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceLungs.png",
-    },
-    {
-      id: 6,
-      title: "Cardiology Consultation",
-      description:
-        "We provide compassionate, professional care to help you live a healthier, more fulfilling life",
-      icon: "/images/AboutUsService/ServiceLungs.png",
-    },
-  ];
+const AboutUsServiceSection = ({ categories = [] }) => {
+  const [showAll, setShowAll] = useState(false);
+
+  const services = categories.map((category) => ({
+    id: category.id,
+    title: category.title,
+    description: category.description,
+    icon: category.icon,
+  }));
 
   const viewportOptions = {
     once: true,
@@ -78,11 +42,13 @@ const AboutUsServiceSection = () => {
     },
   };
 
+  const displayedServices = showAll ? services : services.slice(0, 6);
+
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 bg-bg-light-cream overflow-hidden">
       {/* Gradient overlay fading from top */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent pointer-events-none z-0" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
@@ -118,10 +84,9 @@ const AboutUsServiceSection = () => {
             variants={itemVariants}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           >
-            {services.map((service) => (
+            {[...(showAll ? services : services.slice(0, 6))].map((service) => (
               <motion.div
                 key={service.id}
-                variants={itemVariants}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
                 className="bg-white rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
@@ -152,14 +117,23 @@ const AboutUsServiceSection = () => {
           </motion.div>
 
           {/* View All More Button */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center pt-8"
-          >
-            <ThemeButton variant="outline" size="lg" isArrowIcon={false}>
-              View All More
-            </ThemeButton>
-          </motion.div>
+          {services.length > 6 && (
+            <motion.div
+              variants={itemVariants}
+              className="text-center relative block margin-bottom-10"
+            >
+              <hr height="1px" className="border-border-light mt-18 mb-8" />
+              <ThemeButton
+                variant="outline"
+                size="lg"
+                isArrowIcon={false}
+                onClick={() => setShowAll(!showAll)}
+                className="border-2  absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-[50%] bg-bg-cream"
+              >
+                {showAll ? "Show Less" : "View All More"}
+              </ThemeButton>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>
@@ -167,4 +141,3 @@ const AboutUsServiceSection = () => {
 };
 
 export default AboutUsServiceSection;
-

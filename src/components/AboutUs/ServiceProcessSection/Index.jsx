@@ -218,7 +218,7 @@ const ServiceProcessSection = () => {
                     },
                   },
                 }}
-                className="relative flex flex-col items-center md:-mt-12 lg:-mt-16"
+                className="relative flex flex-col items-center  lg:-mt-16"
               >
                 {/* Step Content - Above Icon */}
                 <div className="text-center space-y-3 max-w-xs mb-6 order-2 md:order-1">
