@@ -71,16 +71,15 @@ const AboutUsSpecialistSection = () => {
             className="text-center space-y-4 max-w-3xl mx-auto"
           >
             {/* Section Label */}
-            <div className="flex flex-col items-center space-y-2">
-              
-              {/* Horizontal line */}
-              <div className="w-16 h-0.5 bg-primary"></div>
+            <div className="flex flex-col text-primary items-center space-y-2">
+              <span className="text-2xl font-semibold tracking-wide">
+                Professional care, personal approach
+              </span>
             </div>
 
-            {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] leading-tight">
-              Meet Our Specialists
-            </h2>
+            <p className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] leading-tight">
+              Meet Our Specialist
+            </p>
           </motion.div>
 
           {/* Specialists Grid */}
@@ -89,7 +88,9 @@ const AboutUsSpecialistSection = () => {
               <motion.div
                 key={specialist.id}
                 variants={itemVariants}
-                className="bg-white rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
+                className={`bg-white rounded-2xl p-6 sm:p-8 shadow-md
+                    hover:scale-105 hover:border-primary 
+                     hover:shadow-[0_10px_40px_rgba(244,103,0,0.15)] transition-all duration-300`}
               >
                 {/* Specialist Image */}
                 <div className="flex justify-center mb-6">
@@ -104,7 +105,7 @@ const AboutUsSpecialistSection = () => {
                 </div>
 
                 {/* Name and Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a2e] mb-4 text-center">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a2e] mb-4 ">
                   {specialist.name}
                 </h3>
 
@@ -114,22 +115,6 @@ const AboutUsSpecialistSection = () => {
                 </p>
 
                 {/* Contact Information */}
-                <div className="border-t border-border-light pt-4 space-y-2">
-                  <p className="text-sm text-text-dark">
-                    <span className="font-semibold">Practice Location:</span>{" "}
-                    {specialist.practiceLocation}
-                  </p>
-                  <p className="text-sm text-text-dark">
-                    <span className="font-semibold">Tel:</span> {specialist.tel}
-                    {specialist.fax && (
-                      <>
-                        {" "}
-                        | <span className="font-semibold">Fax:</span>{" "}
-                        {specialist.fax}
-                      </>
-                    )}
-                  </p>
-                </div>
               </motion.div>
             ))}
           </div>

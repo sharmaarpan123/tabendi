@@ -49,8 +49,9 @@ body {
       rgba(244, 103, 0, 0.95) 35%,
       rgba(244, 103, 0, 0.6) 55%,
       rgba(244, 103, 0, 0.25) 70%,
-      rgba(244, 103, 0, 0) 100%),
-    url("/images/downLoadSection/downLoadBgImg.png");
+      rgba(244, 103, 0, 0) 80%,
+      rgba(244, 103, 0, 0.25) 90%,
+      rgba(244, 103, 0, 0.6) 100%);
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;
@@ -89,7 +90,7 @@ body {
 
 
 /*  media query start */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .download-app-bg {
     background: rgba(244, 103, 0, 0.95)
   }

@@ -48,20 +48,20 @@ const DownloadAppSection = () => {
   };
 
   return (
-    <section className="relative pb-4 lg:pb-10   overflow-hidden">
+    <section className="relative pb-4 lg:pb-10   ">
       <div className="container mx-auto download-app-bg  px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
-          className="relative rounded-3xl overflow-hidden"
+          className="relative rounded-3xl "
         >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Section - Content (2/3) */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-2  p-8 sm:p-12 lg:p-16 lg:pr-60 lg:pl-0  flex flex-col items-center justify-center "
+              className="lg:col-span-1 p-8 sm:p-12 lg:p-16  lg:pl-0  flex flex-col items-center justify-center "
             >
               {/* Top Label */}
               <motion.p
@@ -116,6 +116,35 @@ const DownloadAppSection = () => {
                   />
                 </Link>
               </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+              className="relative w-full h-full flex justify-end"
+            >
+              <div className="absolute  -top-16 left-0 w-full h-full object-contain">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/downLoadSection/downLoadBgImg.png"
+                    alt="App Store"
+                    className="object-contain"
+                    fill
+                  />
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
