@@ -68,16 +68,21 @@ body {
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;
-
 }
+
 .home-service-section-bg {
-  background: linear-gradient(
-    to bottom,
-    rgba(253, 246, 234, 0) 0%,
-    rgba(253, 246, 234, 0.6) 30%,
-    #fdf6ea 60%,
-    #fdf6ea 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(253, 246, 234, 0) 0%,
+      rgba(253, 246, 234, 0.6) 30%,
+      #fdf6ea 60%,
+      #fdf6ea 100%);
+}
+
+.header-bottom-bg {
+  background: linear-gradient(to top,
+      rgba(253, 246, 234, 0) 0%,
+      rgba(253, 246, 234, 0.6) 90%,
+      #fdf6ea 100%);
 }
 
 /*  linear gradient css end */

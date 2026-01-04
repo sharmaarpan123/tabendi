@@ -138,9 +138,9 @@ const TestimonialSection = ({ testimonials = [] }) => {
                         <h4 className="text-lg font-semibold text-[#1a1a2e]">
                           {testimonial.name}
                         </h4>
-                        <p className="text-sm text-primary">
+                        {/* <p className="text-sm text-primary">
                           {testimonial.role}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </motion.div>

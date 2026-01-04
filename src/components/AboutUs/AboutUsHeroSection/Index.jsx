@@ -154,13 +154,12 @@ const AboutUsHeroSection = () => {
                 variants={itemVariants}
                 className="text-base text-text-dark leading-relaxed"
               >
-                Dr. Chool Liyanapatabendi, M.D., is a board-certified physician
-                in Internal Medicine, specializing in the prevention, diagnosis,
-                and management of complex adult medical conditions. His practice
-                emphasizes comprehensive and patient-centered care, ranging from
-                routine health maintenance and chronic disease management to the
-                coordination of care for patients with multiple or complicated
-                illnesses.
+                As the CEO of Tabendi Healthcare Network, my vision is to
+                revolutionize the healthcare industry by seamlessly connecting
+              patients with a comprehensive network of healthcare providers.
+                Through our innovative phone app and web app, we aim to bring
+                healthcare services to the fingertips of every individual,
+                ensuring accessibility anytime, anywhere.
               </motion.p>
 
               {/* Sub-heading */}
