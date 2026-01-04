@@ -122,7 +122,7 @@ const ContactFormSection = () => {
                   variants={itemVariants}
                   className="bg-primary h-full  rounded-3xl flex flex-col"
                 >
-                  <div className="space-y-2 p-4 lg:p-12  ">
+                  <div className="space-y-5 p-4 lg:p-12  ">
                     {/* Heading */}
                     <h2 className="text-3xl sm:text-3xl font-bold text-white">
                       Contact Information

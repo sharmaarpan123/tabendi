@@ -166,8 +166,8 @@ const Hero = () => {
                   Emergency Cases
                 </h3>
                 <p className="text-sm text-text-dark mb-4">
-                  Personalized attention, and continuous support for every
-                  patient.
+                  Rapid response and dedicated clinical support whenever you
+                  need us most.
                 </p>
                 <div className="flex items-center gap-2">
                   <div className="bg-[#8B4513] p-2 rounded-full">
@@ -193,8 +193,8 @@ const Hero = () => {
                   Doctor Timetable
                 </h3>
                 <p className="text-sm text-text-dark mb-4">
-                  Personalized attention, and continuous support for every
-                  patient.
+                  Browse our specialist schedules and find the perfect time for
+                  your visit.
                 </p>
                 <ThemeButton
                   variant="primary"
