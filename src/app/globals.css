@@ -37,6 +37,28 @@ body {
   height: unset !important;
 }
 
+
+.custom-swiper .swiper-pagination {
+  position: relative !important;
+  margin-top: 2rem !important;
+  text-align: center !important;
+}
+
+.custom-swiper .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #e0e0e0;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+  transition: all 0.3s !important;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+  background: var(--primary);
+  width: 32px !important;
+  border-radius: 6px !important;
+}
+
 /*  third party override css end */
 
 

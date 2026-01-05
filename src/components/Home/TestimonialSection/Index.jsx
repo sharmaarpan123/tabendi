@@ -102,14 +102,13 @@ const TestimonialSection = ({ testimonials = [] }) => {
                 clickable: true,
                 bulletActiveClass: "swiper-pagination-bullet-active-custom",
               }}
-             
               breakpoints={{
                 640: {
                   slidesPerView: 2,
                   spaceBetween: 20,
                 },
               }}
-              className="testimonial-swiper"
+              className="custom-swiper"
             >
               {transformedTestimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.id}>
@@ -149,26 +148,6 @@ const TestimonialSection = ({ testimonials = [] }) => {
             </Swiper>
 
             {/* Custom Pagination Styles */}
-            <style jsx global>{`
-              .testimonial-swiper .swiper-pagination {
-                position: relative;
-                margin-top: 2rem;
-                text-align: center;
-              }
-              .testimonial-swiper .swiper-pagination-bullet {
-                width: 12px;
-                height: 12px;
-                background: #e0e0e0;
-                opacity: 1;
-                margin: 0 4px;
-                transition: all 0.3s;
-              }
-              .testimonial-swiper .swiper-pagination-bullet-active {
-                background: var(--primary);
-                width: 32px;
-                border-radius: 6px;
-              }
-            `}</style>
           </motion.div>
 
           {/* Right Section - Content */}

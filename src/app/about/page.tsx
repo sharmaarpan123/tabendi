@@ -24,7 +24,6 @@ const AboutUsPage = async () => {
       <SuccessCountDown />
       <AboutUsChooseUsSection />
       <ServiceProcessSection />
-      <AboutUsSpecialistSection />
       <TestimonialSection testimonials={testimonialsData?.data?.data || []} />
       <DownloadAppSection />
     </>

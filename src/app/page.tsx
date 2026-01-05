@@ -12,13 +12,15 @@ export default async function Home() {
   // Fetch home page data server-side
   const homePageData = await getHomePageData();
 
+  console.log(homePageData?.data?.specialists, "homePageData-----");
+
   return (
     <>
       <Hero />
       <AboutUsSection />
       <ServiceSection categories={homePageData?.data?.categories || []} />
       <SuccessCountDown floatingToTop={true} />
-      <AboutUsSpecialistSection />
+      <AboutUsSpecialistSection specialists={homePageData?.data?.specialists || []} />
       <ContactSection />
       <TestimonialSection
         testimonials={homePageData?.data?.testimonials || []}

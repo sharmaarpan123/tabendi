@@ -7,15 +7,16 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import TwitterIcon from "@/assets/Icon/TwitterIcon";
 import FacebookIcon from "@/assets/Icon/FacebookIcon";
-import PinterestIcon from "@/assets/Icon/PinterestIcon";
 import YouTubeIcon from "@/assets/Icon/YouTubeIcon";
 import InstagramIcon from "@/assets/Icon/InstagramIcon";
+import LinkedInIcon from "@/assets/Icon/LinkedInIcon";
 import LocationIcon from "@/assets/Icon/LocationIcon";
 import PhoneIcon from "@/assets/Icon/PhoneIcon";
 import EmailIcon from "@/assets/Icon/EmailIcon";
 import MenuIcon from "@/assets/Icon/MenuIcon";
 import CloseIcon from "@/assets/Icon/CloseIcon";
 import ThemeButton from "@/components/ui/ThemeButton";
+import { socialMediaLinks } from "@/config/config";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -33,17 +34,21 @@ const contactInfo = [
   { icon: PhoneIcon, text: "630 884 5115" },
 ];
 
-const socialIcons = [
-  { icon: TwitterIcon, label: "Twitter" },
-  { icon: FacebookIcon, label: "Facebook" },
-  { icon: PinterestIcon, label: "Pinterest" },
-  { icon: YouTubeIcon, label: "YouTube" },
-  { icon: InstagramIcon, label: "Instagram" },
-];
-
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const socialIcons = [
+    { icon: LinkedInIcon, label: "LinkedIn", url: socialMediaLinks.linkedIn },
+    { icon: YouTubeIcon, label: "YouTube", url: socialMediaLinks.youtube },
+    {
+      icon: InstagramIcon,
+      label: "Instagram",
+      url: socialMediaLinks.instagram,
+    },
+    { icon: FacebookIcon, label: "Facebook", url: socialMediaLinks.facebook },
+    { icon: TwitterIcon, label: "X (Twitter)", url: socialMediaLinks.x },
+  ];
 
   return (
     <motion.header
@@ -91,7 +96,9 @@ export default function Header() {
               return (
                 <motion.a
                   key={index}
-                  href="#"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={item.label}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}

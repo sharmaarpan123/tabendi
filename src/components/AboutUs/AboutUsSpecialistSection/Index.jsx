@@ -1,33 +1,15 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-const AboutUsSpecialistSection = () => {
-  const specialists = [
-    {
-      id: 1,
-      name: "Chool Liyanapatabendi, M.D., M.A.C.P.",
-      image: "/images/AboutUsSpecialist/HeroDoctor.png", // Placeholder - will be updated
-      description:
-        "Dr. Liyanapatabendi is a board-certified physician in Internal Medicine, specializing in the prevention, diagnosis, and management of complex adult medical conditions. His practice emphasizes comprehensive and patient-centered care, covering routine health maintenance, chronic disease management, and coordination of care for patients with multiple or complicated illnesses.",
-      practiceLocation: "715 W. Lake Street, Suite 104, Addison, IL, 60101",
-      tel: "630 366 6681",
-      fax: "630 366 6550",
-    },
-    {
-      id: 2,
-      name: "Maria Theresa De Rosas, APN",
-      image: "/images/AboutUsSpecialist/Hero2.jpg", // Placeholder - will be updated
-      description:
-        "Maria Theresa De Rosas, APN, specializes in the prevention, diagnosis, and management of complex adult medical conditions. Her practice focuses on delivering comprehensive, patient-centered care that addresses the full spectrum of adult health needs, from routine preventive services and chronic disease management to the coordination of care for individuals with multiple or complicated medical issues. She is committed to evidence-based practice to promote optimal health outcomes and enhance patient quality of life through compassionate and personalized care.",
-      practiceLocation: "715 W. Lake Street, Suite 104, Addison, IL, 60101",
-      tel: "630 366 6681",
-      fax: "630 366 6550",
-    },
-  ];
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
+const AboutUsSpecialistSection = ({ specialists }) => {
   const viewportOptions = {
     once: true,
     amount: 0.2,
@@ -82,42 +64,69 @@ const AboutUsSpecialistSection = () => {
             </p>
           </motion.div>
 
-          {/* Specialists Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {specialists.map((specialist) => (
-              <motion.div
-                key={specialist.id}
-                variants={itemVariants}
-                className={`bg-white rounded-2xl p-6 sm:p-8 shadow-md
-                    hover:scale-105 hover:border-primary 
-                     hover:shadow-[0_10px_40px_rgba(244,103,0,0.15)] transition-all duration-300`}
-              >
-                {/* Specialist Image */}
-                <div className="flex justify-center mb-6">
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-lg overflow-hidden">
-                    <Image
-                      src={specialist.image}
-                      alt={specialist.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
+          {/* Specialists Swiper */}
+          <motion.div variants={itemVariants}>
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+                bulletActiveClass: "swiper-pagination-bullet-active-custom",
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+              }}
+              className="custom-swiper"
+            >
+              {specialists.map((specialist) => (
+                <SwiperSlide key={specialist.id}>
+                  <motion.div
+                    variants={itemVariants}
+                    className={`bg-white rounded-2xl p-6 sm:p-8 shadow-md h-full
+                        hover:scale-105 hover:border-primary 
+                         hover:shadow-[0_10px_40px_rgba(244,103,0,0.15)] transition-all duration-300`}
+                  >
+                    {/* Specialist Image */}
+                    <div className="flex justify-center mb-6">
+                      <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-lg overflow-hidden">
+                        <Image
+                          src={specialist.image}
+                          alt={specialist.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
 
-                {/* Name and Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a2e] mb-4 ">
-                  {specialist.name}
-                </h3>
+                    {/* Name and Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a2e] mb-4 ">
+                      {specialist.name}
+                    </h3>
 
-                {/* Description */}
-                <p className="text-sm sm:text-base text-text-dark leading-relaxed mb-6">
-                  {specialist.description}
-                </p>
-
-                {/* Contact Information */}
-              </motion.div>
-            ))}
-          </div>
+                    {/* Description */}
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: specialist.description,
+                      }}
+                      className="flex flex-col gap-2"
+                    ></p>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </motion.div>
         </motion.div>
       </div>
     </section>
