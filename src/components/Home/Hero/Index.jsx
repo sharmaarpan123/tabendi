@@ -144,6 +144,17 @@ const Hero = () => {
             </motion.div>
 
             {/* Information Cards */}
+          </motion.div>
+        </div>
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end w-full">
+          <div></div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className=" pt-16"
+          >
             <motion.div
               whileHover={{ scale: 1.02 }}
               variants={{
