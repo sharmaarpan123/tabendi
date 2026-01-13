@@ -143,6 +143,7 @@ const Footer = () => {
                   <li key={index}>
                     <Link
                       href={link.href}
+                      target="_blank"
                       className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
                     >
                       {link.label}
