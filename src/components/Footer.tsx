@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import EmailIcon from "@/assets/Icon/EmailIcon";
 import { externalLinks } from "@/config/config";
+import PhoneIcon from "@/assets/Icon/PhoneIcon";
+import LocationIcon from "@/assets/Icon/LocationIcon";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -23,7 +25,18 @@ const Footer = () => {
     // { href: "#", label: "Our Doctor" },
     // { href: "#", label: "Appointments" },
     { href: "/contact", label: "Contact us" },
-    { href: "#", label: "FAQs" },
+    {
+      href: `${externalLinks.cmsLink}/terms`,
+      label: "Terms & Condition",
+    },
+    {
+      href: `${externalLinks.cmsLink}/privacy`,
+      label: "Privacy Policy",
+    },
+    {
+      href: `${externalLinks.cmsLink}/patient_agreement`,
+      label: "User Terms of Agreement",
+    },
   ];
 
   const legalLinks = [
@@ -74,7 +87,7 @@ const Footer = () => {
       {/* Upper Section - Light Gray Background */}
       <div className="bg-white pb-12 pt-8 sm:pb-16 lg:pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Column 1 - Branding and Description */}
             <motion.div variants={itemVariants} className="space-y-4">
               {/* Logo */}
@@ -120,25 +133,6 @@ const Footer = () => {
               </p>
             </motion.div>
 
-            {/* Column 2 - Services */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-base font-bold text-text-dark mb-4">
-                Services
-              </h3>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <Link
-                      href={service.href}
-                      className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
-                    >
-                      {service.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
             {/* Column 3 - Quick Links */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="text-base font-bold text-text-dark mb-4">
@@ -170,6 +164,24 @@ const Footer = () => {
                   className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
                 >
                   support@tabendihealthcarenetwork.com
+                </a>
+              </div>
+                <div className="flex items-center gap-3">
+                <PhoneIcon width={20} height={20} color="var(--text-dark)" />
+                <a
+                  href="mailto:support@tabendihealthcarenetwork.com"
+                  className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
+                >
+                 630 884 5115
+                </a>
+              </div>
+                <div className="flex items-center gap-3">
+                <LocationIcon width={20} height={20} color="var(--text-dark)" />
+                <a
+                  href="mailto:support@tabendihealthcarenetwork.com"
+                  className="text-sm text-text-dark hover:text-primary transition-colors duration-200"
+                >
+                  715 W Lake Street, Suite 201, Addison, IL, 60101
                 </a>
               </div>
             </motion.div>
