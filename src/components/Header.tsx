@@ -305,6 +305,12 @@ export default function Header() {
                     fullWidth={true}
                     isArrowIcon={true}
                     className="w-full"
+                    onClick={() =>
+                      window.open(
+                        process.env.NEXT_PUBLIC_PATIENT_WEB_URL,
+                        "_blank"
+                      )
+                    }
                   >
                     Make Appointment
                   </ThemeButton>
@@ -318,6 +324,12 @@ export default function Header() {
                     size="md"
                     fullWidth
                     isArrowIcon={true}
+                    onClick={() =>
+                      window.open(
+                        process.env.NEXT_PUBLIC_DOCTOR_WEB_URL,
+                        "_blank"
+                      )
+                    }
                   >
                     Join as Doctor
                   </ThemeButton>
